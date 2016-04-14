@@ -1,0 +1,18 @@
+! URxvt
+URxvt.scrollBar: false
+URxvt.saveLines: 16
+! URxvt.transparent: true
+! URxvt.shading: 32
+URxvt.cursorBlink: true
+URxvt.geometry: 86x26
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
+! Font
+URxvt.font: xft:Noto Mono:size=11, \
+            xft:Noto Sans Mono CJK SC:size=11, \
+            xft:Unifont:size=11
+URxvt.boldFont: xft:Noto Mono:style=Bold:size=11
+URxvt.boldItalicFont: xft:Noto Mono:style=Bold Italic:size=11
+URxvt.italicFont: xft:Noto Mono:style=Italic:size=11
+Xft.dpi: 98

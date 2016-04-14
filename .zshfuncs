@@ -1,0 +1,117 @@
+#!/usr/bin/env zsh
+if uname -r | grep -q 'ARCH'; then
+  # Print binary files given by a package
+  howdoi() {
+    for file in $(pacman -Ql $1)
+    do
+      if [[ -x "$file" && ! -d "$file" ]]; then
+        echo "$file"
+      fi
+    done
+  }
+
+  # Print manual pages given by a package
+  about() {
+    local PATHS="$(pacman -Ql "$1" |\
+      grep "^$1 /usr/share/man/.*[^/]\$" |\
+      cut -d\  -f2)"
+    if [[ ! -z "$PATHS" ]]; then
+      echo "$PATHS" | xargs basename -a | sort
+    fi
+  }
+else
+  # Print binary files given by a package
+  howdoi() {
+    for file in $(dpkg -L $1)
+    do
+      if [[ -x "$file" && ! -d "$file" ]]; then
+        echo "$file"
+      fi
+    done
+  }
+
+  # Print manual pages given by a package
+  about() {
+    local PATHS="$(dpkg -L "$1" |\
+      grep "^$1 /usr/share/man/.*[^/]\$" |\
+      cut -d\  -f2)"
+    if [[ ! -z "$PATHS" ]]; then
+      echo "$PATHS" | xargs basename -a | sort
+    fi
+  }
+fi
+
+# Make a directory and jump into it
+jmp() {
+  if [ ! -d "$1" ]; then
+    if [ -e "$1" ]; then
+      echo Not clobbering existing file...
+    else
+      echo Making "$1"...
+      mkdir -p $1
+    fi
+  fi
+
+  if [ -d "$1" ]; then
+    echo Entering "$1"...
+    cd "$1"
+  fi
+}
+
+# Clone a Github project
+hubclone() {
+  jmp ~/code/github/$(dirname $1)
+  git clone github:$1
+  cd $(basename $1)
+  cls
+}
+
+# Clone a Github project and put it in the Go root
+goclone() {
+  jmp ~/go/src/github.com/$(dirname $1)
+  git clone github:$1
+  cd $(basename $1)
+  cls
+}
+
+# Echo a range of numbers
+range() {
+  local START=$1
+  local END=$2
+
+  if [ -z $END ]; then
+    END=$START
+    START=0
+  fi
+
+  if [ $START -gt $END ]; then
+    local TMP=$START
+    START=$END
+    END=$TMP
+  fi
+
+  while [ $START -lt $END ]
+  do
+    echo -n "$START "
+    START=$(($START + 1))
+  done
+
+  echo
+}
+
+t() {
+  tmux start
+  if tmux has -t "$1" 2>/dev/null; then
+    echo 'Attaching to existing session...'
+    sleep 1
+    clear
+    tmux attach -t "$1"
+  else
+    echo "Starting new session for ${1}..."
+    sleep 1
+    clear
+    tmux new -s "$1" "$@"
+  fi
+}
+
+# vim: ft=zsh

@@ -1,0 +1,14 @@
+[ui]
+username = Jordan Brown <jordan.keith.brown@gmail.com>
+portablefilenames = warn
+
+[extensions]
+extdiff = 
+eol = 
+histedit = 
+purge = 
+rebase = 
+strip = 
+
+[tortoisehg]
+vdiff = meld
