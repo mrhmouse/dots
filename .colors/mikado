@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+# mikado
+export BLACK=322a2c
+export BOLD_BLACK=46423b
+export RED=a04363
+export BOLD_RED=ae837a
+export GREEN=9b9329
+export BOLD_GREEN=b4aa30
+export YELLOW=bf7a29
+export BOLD_YELLOW=c7a551
+export BLUE=6a8c8c
+export BOLD_BLUE=74999e
+export MAGENTA=856774
+export BOLD_MAGENTA=9c818e
+export CYAN=757978
+export BOLD_CYAN=9fa590
+export WHITE=bcbcaf
+export BOLD_WHITE=c1c4bc
