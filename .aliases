@@ -1,0 +1,66 @@
+# All of the color, please
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias dirs='ls -d */'
+
+if uname -r | grep -q ARCH; then
+  # Package management
+  alias update='sudo pacman --color=always -Suy'
+  alias gimme='update && sudo pacman --color=always -S'
+  alias drop='sudo pacman --color=always -Rus'
+
+  whats() {
+      pacman --color=always -Ss "$@" | less -R
+  }
+
+  # AUR
+  aurget() {
+    pushd
+    cd ~/aur
+    if git clone "https://aur.archlinux.org/${1}.git" ; then
+      echo "Cloned ${1}"
+    else
+      cd "$1"
+      git pull --ff-only
+    fi
+    cd "$1"
+    makepkg && sudo pacman -U "$1"*.tar.xz
+    popd
+  }
+
+  aurfind() {
+    local BASE='https://aur.archlinux.org/rpc.php?type=search&arg='
+    curl "${BASE}$(echo "$@" | sed 's/ /%20/g')" -s \
+      | jq '.results|.[]|{Name,Description}' \
+      | sed -e 's/\({\|}\)$//g' \
+            -e 's/"Name": "\(.*\)",/\1/g' \
+            -e 's/"Description": "\(.*\)"/: \1/g' \
+      | fmt
+  }
+else
+  alias update='sudo apt-get update && sudo apt-get upgrade'
+  alias gimme='update && sudo apt-get install'
+  whats() {
+      apt-cache search "$@" | less
+  }
+  
+  drop() {
+    sudo apt-get remove $@
+    sudo apt-get autoremove
+  }
+fi
+
+# Clear-screen shortcuts
+alias cl='clear'
+alias cls='cl;ls'
+
+# Shorter tmux launching
+alias attach='tmux attach || tmux'
+
+# Make a password
+alias mkpass='apg -m 16 -x 32 -M sncl'
+
+# Serve the current directory
+alias serve='python -m http.server'
+
+# vim: ft=sh
