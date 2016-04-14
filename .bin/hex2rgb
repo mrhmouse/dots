@@ -1,0 +1,9 @@
+#!/bin/sh
+
+read HEX
+
+c() {
+  echo "0x$(echo $HEX | cut -c "$1")"
+}
+
+printf '%i,%i,%i' $(c 1,2) $(c 3,4) $(c 5,6)

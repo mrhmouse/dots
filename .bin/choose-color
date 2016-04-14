@@ -1,0 +1,62 @@
+#!/usr/bin/zsh
+
+is_shell_script() {
+    local filename="$1"
+    local first_line="$(cat "$filename" | head -n1)"
+    test "$first_line" = '#!/usr/bin/zsh'
+}
+
+POSITION=1
+AVAILABLE_COLORS=()
+for color_file in ~/.colors/* ; do
+    if is_shell_script "$color_file" ; then
+        AVAILABLE_COLORS+=("$color_file")
+    fi
+done
+
+
+show_colors() {
+    tmpl2linux
+    colorgrid
+    echo "Currently viewing: $(basename "${AVAILABLE_COLORS[POSITION]}")"
+    echo
+}
+
+get_next_command() {
+    echo '[N]ext theme'
+    echo '[P]revious theme'
+    local line=''
+    read -r line
+    line="${line[1]}"
+    if test "$line" = 'N' -o "$line" = 'n' ; then
+        POSITION=$((POSITION + 1))
+    elif test "$line" = 'P' -o "$line" = 'p' ; then
+        POSITION=$((POSITION - 1))
+    else
+        get_next_command
+        return
+    fi
+
+    if test "$POSITION" -eq 0 ; then
+        POSITION=$#AVAILABLE_COLORS
+    elif test "$POSITION" -gt $#AVAILABLE_COLORS ; then
+        POSITION=1
+    fi
+}
+
+set_colors() {
+    local color="${AVAILABLE_COLORS[POSITION]}"
+    rm ~/.current-colors
+    ln -s "$color" ~/.current-colors
+    source "$color"
+}
+
+run() {
+    clear
+    set_colors
+    show_colors
+    get_next_command
+    run
+}
+
+run

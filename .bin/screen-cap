@@ -1,0 +1,35 @@
+#!/bin/sh
+
+SIZE=$(xrandr | head -n 1 | cut -d, -f 2 | sed -e s/current// -e s/\\s//g)
+
+WIDTH=$(echo $SIZE | sed -e s/x.\\+//g)
+HEIGHT=$(echo $SIZE | sed -e s/.\\+x//g)
+
+if [ -z $SCALE ]; then
+  SCALE='2'
+fi
+
+WIDTH=$(( $WIDTH / $SCALE ))
+HEIGHT=$(( $HEIGHT / $SCALE ))
+
+OUT=$(zenity --file-selection --save)
+
+if [ 0 -ne $? ]; then
+  exit
+fi
+
+if [ -z $OUT ]; then
+  exit
+fi
+
+OUT=$(echo "${OUT}" | sed -e s/\\s/_/g)
+
+FFMPEG="ffmpeg\
+  -f x11grab\
+  -video_size ${SIZE}\
+  -i ${DISPLAY}\
+  -s ${WIDTH}x${HEIGHT}
+  -f h264\
+  ${OUT}.mkv"
+
+urxvt -hold -e ${FFMPEG}

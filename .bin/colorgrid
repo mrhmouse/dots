@@ -1,0 +1,49 @@
+#!/usr/bin/zsh
+
+escape() {
+    echo -en '\e'
+    echo -n "[${1}m"
+}
+
+block() {
+    # echo -n '░█▄▀█░'
+    echo -n '▄▀'
+}
+
+sep() {
+    echo -n '  '
+}
+
+chunk() {
+    escape $1
+    block
+    block
+}
+
+row() {
+    sep
+    for n in "$@" ; do
+        chunk "$n"
+        sep
+    done
+    echo
+}
+
+fg-row() {
+    escape 1
+    row 30 31 32 33 34 35 36 37
+    escape 22
+    row 30 31 32 33 34 35 36 37
+}
+
+grid() {
+    escape 0
+    fg-row
+    for n in 40 41 42 43 44 45 46 47 ; do
+        escape $n
+        fg-row
+    done
+    escape 0
+}
+
+grid

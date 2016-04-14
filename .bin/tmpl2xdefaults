@@ -1,0 +1,52 @@
+#!/usr/bin/zsh
+
+set -e
+test -n "$BLACK"
+test -n "$RED"
+test -n "$GREEN"
+test -n "$YELLOW"
+test -n "$BLUE"
+test -n "$MAGENTA"
+test -n "$CYAN"
+test -n "$WHITE"
+
+test -n "$BOLD_BLACK"
+test -n "$BOLD_RED"
+test -n "$BOLD_GREEN"
+test -n "$BOLD_YELLOW"
+test -n "$BOLD_BLUE"
+test -n "$BOLD_MAGENTA"
+test -n "$BOLD_CYAN"
+test -n "$BOLD_WHITE"
+set +e
+
+if test -z "$BACKGROUND" ; then
+    export BACKGROUND="$BLACK"
+fi
+if test -z "$FOREGROUND" ; then
+    export FOREGROUND="$WHITE"
+fi
+if test -z "$CURSOR_COLOR" ; then
+    export CURSOR_COLOR="$BLUE"
+fi
+
+echo "
+*foreground:  #$FOREGROUND
+*background:  #$BACKGROUND
+*cursorColor: #$CURSOR_COLOR
+*color0:      #$BLACK
+*color8:      #$BOLD_BLACK
+*color1:      #$RED
+*color9:      #$BOLD_RED
+*color2:      #$GREEN
+*color10:     #$BOLD_GREEN
+*color3:      #$YELLOW
+*color11:     #$BOLD_YELLOW
+*color4:      #$BLUE
+*color12:     #$BOLD_BLUE
+*color5:      #$MAGENTA
+*color13:     #$BOLD_MAGENTA
+*color6:      #$CYAN
+*color14:     #$BOLD_CYAN
+*color7:      #$WHITE
+*color15:     #$BOLD_WHITE"

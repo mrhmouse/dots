@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+pgrep emacs || emacs --daemon
+
+if test "$1" = - ; then
+    shift
+    BUFFER="$(mktemp)"
+    cat > "$BUFFER"
+    emacsclient -c "$BUFFER" "$@"
+    cat "$BUFFER"
+    rm "$BUFFER" 2>&1 >/dev/null
+else
+    exec emacsclient -c "$@"
+fi

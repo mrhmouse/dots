@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+if test -z "$CURSOR_COLOR" ; then
+    export CURSOR_COLOR="$FOREGROUND"
+fi
+
+XID=$(tabbed \
+          -cds \
+          -t "#$BACKGROUND" \
+          -T "#$CURSOR_COLOR" \
+          -u "#$BACKGROUND" \
+          -U "#$FOREGROUND" \
+          surf -b -e)
+surf -b -e $XID "$*" &
+disown

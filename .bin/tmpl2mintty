@@ -1,0 +1,33 @@
+#!/usr/bin/zsh
+
+c() {
+    echo "$1" | hex2rgb
+}
+
+echo "
+FontHeight=12
+Font=DejaVu Sans Mono
+FontSmoothing=none
+CursorType=block
+Columns=100
+Rows=35
+
+ForegroundColour=$(c $FOREGROUND)
+BackgroundColour=$(c $BACKGROUND)
+CursorColour=$(c $CURSOR_COLOR)
+Black=$(c $BLACK)
+BoldBlack=$(c $BOLD_BLACK)
+Red=$(c $RED)
+BoldRed=$(c $BOLD_RED)
+Green=$(c $GREEN)
+BoldGreen=$(c $BOLD_GREEN)
+Yellow=$(c $YELLOW)
+BoldYellow=$(c $BOLD_YELLOW)
+Blue=$(c $BLUE)
+BoldBlue=$(c $BOLD_BLUE)
+Magenta=$(c $MAGENTA)
+BoldMagenta=$(c $BOLD_MAGENTA)
+Cyan=$(c $CYAN)
+BoldCyan=$(c $BOLD_CYAN)
+White=$(c $WHITE)
+BoldWhite=$(c $BOLD_WHITE)"
