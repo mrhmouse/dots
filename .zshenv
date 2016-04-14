@@ -4,10 +4,8 @@ export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
 export PATH="${HOME}/.bin:${PATH}"
-export PATH="${PATH}:/opt/nemerle"
-export PATH="${PATH}:${HOME}/.cabal/bin"
 export PATH="${PATH}:${HOME}/go/bin"
-export PATH="${PATH}:$(gem-dir)"
+export PATH="${PATH}:${HOME}/.gem/ruby/2.3.0/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
 export PAGER=less
