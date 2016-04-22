@@ -1,0 +1,24 @@
+
+export FOREGROUND=d7f2f8
+export BACKGROUND=080c0d
+
+export BLACK=0e1618
+export RED=dc56d7
+export GREEN=169572
+export YELLOW=169395
+export BLUE=5482bb
+export MAGENTA=6b4da2
+export CYAN=39dcc1
+export WHITE=d7f2f8
+
+export BOLD_BLACK=031317
+export BOLD_RED=d25dce
+export BOLD_GREEN=30ba94
+export BOLD_YELLOW=47d0d2
+export BOLD_BLUE=4070ab
+export BOLD_MAGENTA=5d34a6
+export BOLD_CYAN=59ebd3
+export BOLD_WHITE=edf6f8
+
+export CURSOR_COLOR=$YELLOW
+

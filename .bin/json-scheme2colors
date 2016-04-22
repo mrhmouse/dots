@@ -1,0 +1,58 @@
+#!/usr/bin/zsh
+
+## Example scheme
+## {
+##     "name": "",
+##     "author": "",
+##     "color": [
+##         "#0e1618",
+##         "#dc56d7",
+##         "#169572",
+##         "#169395",
+##         "#5482bb",
+##         "#6b4da2",
+##         "#39dcc1",
+##         "#d7f2f8",
+##         "#031317",
+##         "#d25dce",
+##         "#30ba94",
+##         "#47d0d2",
+##         "#4070ab",
+##         "#5d34a6",
+##         "#59ebd3",
+##         "#edf6f8"
+##     ],
+##     "foreground": "#d7f2f8",
+##     "background": "#080c0d"
+## }
+
+COLORS=()
+jq -r '[.foreground,.background]+.color|map(.[1:])|.[]' | \
+    while read -r COLOR ; do
+        COLORS+=$COLOR
+    done
+
+echo "
+export FOREGROUND=${COLORS[1]}
+export BACKGROUND=${COLORS[2]}
+
+export BLACK=${COLORS[3]}
+export RED=${COLORS[4]}
+export GREEN=${COLORS[5]}
+export YELLOW=${COLORS[6]}
+export BLUE=${COLORS[7]}
+export MAGENTA=${COLORS[8]}
+export CYAN=${COLORS[9]}
+export WHITE=${COLORS[10]}
+
+export BOLD_BLACK=${COLORS[11]}
+export BOLD_RED=${COLORS[12]}
+export BOLD_GREEN=${COLORS[13]}
+export BOLD_YELLOW=${COLORS[14]}
+export BOLD_BLUE=${COLORS[15]}
+export BOLD_MAGENTA=${COLORS[16]}
+export BOLD_CYAN=${COLORS[17]}
+export BOLD_WHITE=${COLORS[18]}
+
+export CURSOR_COLOR=\$YELLOW
+"
