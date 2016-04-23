@@ -3,12 +3,26 @@ if test -z "$CURSOR_COLOR" ; then
     export CURSOR_COLOR="$FOREGROUND"
 fi
 
-XID=$(tabbed \
-          -cds \
-          -t "#$BACKGROUND" \
-          -T "#$CURSOR_COLOR" \
-          -u "#$BACKGROUND" \
-          -U "#$FOREGROUND" \
-          surf -b -e)
-surf -b -e $XID "$*" &
+USERAGENT='how about stop sniffing my UA'
+XID=
+if pgrep tabbed ; then
+    read -r XID < ~/.browse.xid
+    if [[ 0 -ne $? ]] ; then
+        XID=
+        echo > ~/.browse.xid
+    fi
+fi
+
+if [[ -z "$XID" ]] ; then
+    XID=$(tabbed \
+              -cds \
+              -t "#$BACKGROUND" \
+              -T "#$CURSOR_COLOR" \
+              -u "#$BACKGROUND" \
+              -U "#$FOREGROUND" \
+              surf -b -u "$USERAGENT" -e)
+    echo $XID > ~/.browse.xid
+fi
+
+surf -b -e $XID -u "$USERAGENT" "$*"&
 disown
