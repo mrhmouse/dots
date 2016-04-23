@@ -1,0 +1,33 @@
+# jellyx port
+## :: JellyX :: A delicious collision of Jellybeans and Xoria256
+##
+## heavily based on bubblegum, by Kyla
+## https://bbs.archlinux.org/viewtopic.php?pid=1033513#p1033513
+
+export BLACK=000000
+export BOLD_BLACK=0a0a0a
+
+export RED=d75f5f
+export BOLD_RED=d787af
+
+export GREEN=00af87
+export BOLD_GREEN=5faf5f
+
+export YELLOW=afd75f
+export BOLD_YELLOW=d7af5f
+
+export BLUE=5fafd7
+export BOLD_BLUE=87afd7
+
+export MAGENTA=8787af
+export BOLD_MAGENTA=8787d7
+
+export CYAN=00afd7
+export BOLD_CYAN=87afff
+
+export WHITE=ffffff
+export BOLD_WHITE=ffffff
+
+export BACKGROUND=000000
+export FOREGROUND=a8a8a8
+export CURSOR_COLOR=$BOLD_BLUE
