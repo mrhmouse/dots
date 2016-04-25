@@ -34,4 +34,7 @@ echo -e "\e]PC$BOLD_BLUE"
 echo -e "\e]PD$BOLD_MAGENTA"
 echo -e "\e]PE$BOLD_CYAN"
 echo -e "\e]PF$BOLD_WHITE"
+echo -e "\e]10;#$FOREGROUND\a"
+echo -e "\e]11;#$BACKGROUND\a"
+echo -e "\e]12;#$CURSOR_COLOR\a"
 clear
