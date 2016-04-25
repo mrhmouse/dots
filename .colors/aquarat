@@ -1,4 +1,4 @@
-
+#!/usr/bin/zsh
 export FOREGROUND=d7f2f8
 export BACKGROUND=080c0d
 
