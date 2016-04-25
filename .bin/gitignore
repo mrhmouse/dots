@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+echo >> .gitignore
+while [[ $# -gt 0 ]] ; do
+    echo "$1" >> .gitignore
+    shift
+done
