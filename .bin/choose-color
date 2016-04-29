@@ -59,4 +59,11 @@ run() {
     run
 }
 
-run
+if [[ $# -eq 1 ]] && [[ -e "${HOME}/.colors/$1" ]] ; then
+    rm ~/.current-colors
+    ln -s "${HOME}/.colors/$1" ~/.current-colors
+    source ~/.current-colors
+    tmpl2linux
+else
+    run
+fi
