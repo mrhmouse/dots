@@ -46,4 +46,6 @@ grid() {
     escape 0
 }
 
-grid
+CACHEFILE=~/.colorgrid.cache
+[[ -e $CACHEFILE ]] || grid > $CACHEFILE
+cat $CACHEFILE
