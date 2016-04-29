@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
+
 export FOREGROUND=f8f8f8
 export BACKGROUND=171717
-export CURSOR_COLOR=ffa800
 
 export BLACK=171717
 export RED=d81765
@@ -20,3 +20,6 @@ export BOLD_BLUE=289cd5
 export BOLD_MAGENTA=ff2491
 export BOLD_CYAN=0a9b81
 export BOLD_WHITE=f8f8f8
+
+export CURSOR_COLOR=$YELLOW
+

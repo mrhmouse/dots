@@ -1,0 +1,25 @@
+#!/usr/bin/zsh
+
+export FOREGROUND=ffffff
+export BACKGROUND=000000
+
+export BLACK=251f1f
+export RED=eb4509
+export GREEN=94e76b
+export YELLOW=ffac18
+export BLUE=46aede
+export MAGENTA=e32c57
+export CYAN=d6dbac
+export WHITE=efefef
+
+export BOLD_BLACK=5e5e5e
+export BOLD_RED=eb4509
+export BOLD_GREEN=95e76b
+export BOLD_YELLOW=ffac18
+export BOLD_BLUE=46aede
+export BOLD_MAGENTA=e32c57
+export BOLD_CYAN=d6dbac
+export BOLD_WHITE=efefef
+
+export CURSOR_COLOR=$YELLOW
+

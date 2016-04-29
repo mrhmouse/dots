@@ -1,0 +1,25 @@
+#!/usr/bin/zsh
+
+export FOREGROUND=adadad
+export BACKGROUND=202020
+
+export BLACK=202020
+export RED=707070
+export GREEN=808080
+export YELLOW=909090
+export BLUE=a0a0a0
+export MAGENTA=505050
+export CYAN=606060
+export WHITE=adadad
+
+export BOLD_BLACK=404040
+export BOLD_RED=e72d6a
+export BOLD_GREEN=cf275f
+export BOLD_YELLOW=b52253
+export BOLD_BLUE=2cc9e8
+export BOLD_MAGENTA=27b3cf
+export BOLD_CYAN=229db5
+export BOLD_WHITE=e7e7e7
+
+export CURSOR_COLOR=$YELLOW
+
