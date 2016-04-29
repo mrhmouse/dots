@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+xbacklight -set 0
+redshift 2>&1 >/dev/null &
+disown
+exec sudo cpupower frequency-set -f 1.2GHz
