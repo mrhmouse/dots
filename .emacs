@@ -59,3 +59,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Rust setup
+(require 'flymake-rust)
+(add-hook 'rust-mode-hook
+          'flymake-rust-load)
+
+;;; FlyMake setup
+; Show current error with C-c SPC
+(add-hook 'flymake-mode-hook
+          #'(lambda ()
+              (local-set-key (kbd "C-c SPC")
+                             'flymake-popup-current-error-menu)))
