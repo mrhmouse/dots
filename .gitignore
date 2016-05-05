@@ -3,7 +3,10 @@
 !.colors/
 !.colors/*
 !.aliases
-!.emacs
+!.emacs.d
+!.emacs.d/init.el
+!.emacs.d/init.d
+!.emacs.d/init.d/*
 !.hgrc
 !.tmux.conf
 !.xinitrc
@@ -12,7 +15,6 @@
 !.zshfuncs
 !.zshrc
 !.Xresources
-!.emacs
 !.hgrc
 !.tmux.conf
 !.xinitrc
