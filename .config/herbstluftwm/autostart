@@ -1,0 +1,68 @@
+#!/usr/bin/bash
+hc() {
+    herbstclient "$@"
+}
+
+# reset
+hc keyunbind --all
+hc mouseunbind
+
+# Theme settings
+hc set frame_gap 8
+hc set window_gap 2
+hc set frame_bg_transparent 1
+hc set frame_transparent_width 0
+hc set frame_active_opacity 100
+hc set frame_normal_opacity 0
+hc set frame_border_width 1
+hc set frame_border_active_color "#$BACKGROUND"
+hc set frame_border_normal_color "#$FOREGROUND"
+hc set window_border_active_color "#$BACKGROUND"
+hc set window_border_normal_color "#$CURSOR_COLOR"
+hc set window_border_width 1
+hc set smart_frame_surroundings 1
+hc set smart_window_surroundings 1
+
+# Numeric tags
+for TAG in 0 1 2 3 4 5 6 7 8 9
+do
+    hc add "$TAG"
+    hc keybind "Super+$TAG" use "$TAG"
+    hc keybind "Super+Shift+$TAG" move $TAG
+done
+
+hc use 1
+hc merge_tag default 0
+
+# Mouse commands
+hc mousebind Super-B1 move
+hc mousebind Super-B3 resize
+
+# Keyboard commands
+hc keybind Super+e spawn emenu
+hc keybind Super+Shift+r reload
+hc keybind Super+q quit
+hc keybind Super+space spawn dmenu_run
+hc keybind Super+Return spawn urxvt
+
+# Window movement
+hc keybind Super+n split auto
+hc keybind Super+u split top
+hc keybind Super+i split right
+hc keybind Super+r remove
+hc keybind Super+c close
+hc keybind Super+o rotate
+hc keybind Super+Control+h shift left
+hc keybind Super+Control+l shift right
+hc keybind Super+Control+j shift down
+hc keybind Super+Control+k shift up
+hc keybind Super+h focus left
+hc keybind Super+l focus right
+hc keybind Super+j focus down
+hc keybind Super+k focus up
+hc keybind Super+Shift+h resize left +0.05
+hc keybind Super+Shift+l resize right +0.05
+hc keybind Super+Shift+j resize down +0.05
+hc keybind Super+Shift+k resize up +0.05
+hc keybind Super+p pseudotile toggle
+hc keybind Super+f floating toggle

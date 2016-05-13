@@ -2,6 +2,9 @@
 !.gitignore
 !.colors/
 !.colors/*
+!.config/
+!.config/herbstluftwm/
+!.config/herbstluftwm/autostart
 !.aliases
 !.emacs.d
 !.emacs.d/init.el
