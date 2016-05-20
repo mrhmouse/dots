@@ -1,7 +1,7 @@
 (defun load-init-files ()
   "Load every elisp file in init.d"
   (dolist (file (init-files))
-    (load file)))
+    (byte-compile-file file t)))
 
 (defun init-files ()
   "Get a sorted list of every elisp file in init.d"
