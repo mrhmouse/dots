@@ -1,5 +1,4 @@
 #!/usr/bin/zsh
-
 export FOREGROUND=ffffff
 export BACKGROUND=000000
 
