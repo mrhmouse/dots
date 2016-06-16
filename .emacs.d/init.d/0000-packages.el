@@ -5,3 +5,9 @@
  '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
+(let ((packages '(paredit
+		  flymake-rust
+		  god-mode)))
+  (dolist (package packages)
+    (unless (package-installed-p package)
+      (package-install package))))
