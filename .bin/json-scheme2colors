@@ -32,7 +32,7 @@ jq -r '[.foreground,.background]+.color|map(.[1:])|.[]' | \
         COLORS+=$COLOR
     done
 
-echo "
+echo "#!/usr/bin/zsh
 export FOREGROUND=${COLORS[1]}
 export BACKGROUND=${COLORS[2]}
 
