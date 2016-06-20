@@ -17,4 +17,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(magit-diff-added ((t (:background "#ddffdd" :foreground "#000000"))))
+ '(magit-diff-added-highlight ((t (:background "#cceecc" :foreground "#000000"))))
+ '(magit-diff-base ((t (:background "#ffffcc" :foreground "#000000"))))
+ '(magit-diff-base-highlight ((t (:background "#eeeebb" :foreground "#000000"))))
+ '(magit-diff-removed ((t (:background "#ffdddd" :foreground "#000000"))))
+ '(magit-diff-removed-highlight ((t (:background "#eecccc" :foreground "#000000"))))
+ '(magit-section-highlight ((t (:background "grey95" :foreground "black")))))
