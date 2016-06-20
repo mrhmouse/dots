@@ -7,6 +7,7 @@
 (package-initialize)
 (let ((packages '(paredit
 		  flymake-rust
+                  javadoc-lookup
 		  god-mode)))
   (dolist (package packages)
     (unless (package-installed-p package)
