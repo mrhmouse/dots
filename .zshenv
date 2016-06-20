@@ -4,14 +4,14 @@ export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
 export PATH="${HOME}/.bin:${PATH}"
-export PATH="${PATH}:${HOME}/go/bin"
 export PATH="${PATH}:${HOME}/.gem/ruby/2.3.0/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
 
 export PAGER=less
 
-export GOPATH=~/go
+export GOPATH=~/.go
+export PATH="${PATH}:${GOPATH}/bin"
 
 export LLVM_FLAGS='--target=arm -mfloat-abi=hard'
 
