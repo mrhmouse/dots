@@ -5,8 +5,7 @@
 
 (setq common-lisp-hyperspec-root "file:///home/jordan/.emacs.d/HyperSpec/")
 
-;; TODO: test for sbcl existence
-(setq inferior-lisp-program "ecl")
+(setq inferior-lisp-program "sbcl")
 
 ;; Bind arrow keys in dumb terminals for paredit
 (add-hook 'paredit-mode-hook
