@@ -5,6 +5,8 @@
 !.config/
 !.config/herbstluftwm/
 !.config/herbstluftwm/autostart
+!.config/fontconfig/
+!.config/fontconfig/fonts.conf
 !.aliases
 !.emacs.d
 !.emacs.d/init.el
