@@ -38,31 +38,40 @@ hc merge_tag default 0
 hc mousebind Super-B1 move
 hc mousebind Super-B3 resize
 
+key() {
+    hc keybind "$@"
+}
+
 # Keyboard commands
-hc keybind Super+e spawn emenu
-hc keybind Super+Shift+r reload
-hc keybind Super+q quit
-hc keybind Super+space spawn dmenu_run
-hc keybind Super+Return spawn urxvt
+key Super+e spawn emenu
+key Super+Shift+r reload
+key Super+q quit
+key Super+space spawn dmenu_run
+key Super+Return spawn urxvt
+key XF86MonBrightnessUp spawn xbacklight -inc 5
+key XF86MonBrightnessDown spawn xbacklight -dec 5
+key XF86AudioRaiseVolume spawn pactl set-sink-volume 0 '+10%'
+key XF86AudioLowerVolume spawn pactl set-sink-volume 0 '-10%'
+key XF86AudioMute spawn pactl set-sink-mute 0 toggle
 
 # Window movement
-hc keybind Super+n split auto
-hc keybind Super+u split top
-hc keybind Super+i split right
-hc keybind Super+r remove
-hc keybind Super+c close
-hc keybind Super+o rotate
-hc keybind Super+Control+h shift left
-hc keybind Super+Control+l shift right
-hc keybind Super+Control+j shift down
-hc keybind Super+Control+k shift up
-hc keybind Super+h focus left
-hc keybind Super+l focus right
-hc keybind Super+j focus down
-hc keybind Super+k focus up
-hc keybind Super+Shift+h resize left +0.05
-hc keybind Super+Shift+l resize right +0.05
-hc keybind Super+Shift+j resize down +0.05
-hc keybind Super+Shift+k resize up +0.05
-hc keybind Super+p pseudotile toggle
-hc keybind Super+f floating toggle
+key Super+n split auto
+key Super+u split top
+key Super+i split right
+key Super+r remove
+key Super+c close
+key Super+o rotate
+key Super+Control+h shift left
+key Super+Control+l shift right
+key Super+Control+j shift down
+key Super+Control+k shift up
+key Super+h focus left
+key Super+l focus right
+key Super+j focus down
+key Super+k focus up
+key Super+Shift+h resize left +0.05
+key Super+Shift+l resize right +0.05
+key Super+Shift+j resize down +0.05
+key Super+Shift+k resize up +0.05
+key Super+p pseudotile toggle
+key Super+f floating toggle
