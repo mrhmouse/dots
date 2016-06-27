@@ -23,6 +23,10 @@ hc set window_border_width 1
 hc set smart_frame_surroundings 1
 hc set smart_window_surroundings 1
 
+# Behavior
+hc set focus_crosses_monitor_boundaries 1
+hc set auto_detect_monitors 1
+
 # Numeric tags
 for TAG in 0 1 2 3 4 5 6 7 8 9
 do
