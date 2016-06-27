@@ -26,3 +26,4 @@ source ~/.current-colors 2>/dev/null
 # Local Variables:
 # mode: shell-script
 # End:
+source ~/.cargo/env
