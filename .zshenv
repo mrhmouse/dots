@@ -22,8 +22,9 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 source ~/.current-colors 2>/dev/null
+source ~/.cargo/env 2>/dev/null
 
 # Local Variables:
 # mode: shell-script
 # End:
-source ~/.cargo/env
+
