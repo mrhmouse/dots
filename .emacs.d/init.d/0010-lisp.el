@@ -3,7 +3,8 @@
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'comint-mode-hook 'paredit-mode)
 
-(setq common-lisp-hyperspec-root "file:///home/jordan/.emacs.d/HyperSpec/")
+(setq common-lisp-hyperspec-root
+      "file:///home/jordan/.emacs.d/HyperSpec/")
 
 (setq inferior-lisp-program "sbcl")
 

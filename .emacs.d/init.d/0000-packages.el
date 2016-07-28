@@ -8,6 +8,7 @@
 (let ((packages '(paredit
 		  flymake-rust
                   javadoc-lookup
+                  magit
 		  god-mode)))
   (dolist (package packages)
     (unless (package-installed-p package)
