@@ -1,4 +1,5 @@
 export EDITOR="e"
+export SUDO_EDITOR=emacs
 
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
@@ -20,6 +21,8 @@ export GBDK_DIR="${HOME}/.local/opt/gbdk"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+
+export MAIL=~/Mail
 
 source ~/.current-colors 2>/dev/null
 source ~/.cargo/env 2>/dev/null
