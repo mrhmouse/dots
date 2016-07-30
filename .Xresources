@@ -9,7 +9,7 @@ URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
 
 ! Font
-URxvt.font: xft:Source Code Pro:style=Regular:size=12
-URxvt.boldFont: xft:Source Code Pro:style=Bold:size=12
-URxvt.italicFont: xft:Source Code Pro:style=Italic:size=12
-URxvt.boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=12
+URxvt.font: xft:Source Code Pro:style=Regular:size=16
+URxvt.boldFont: xft:Source Code Pro:style=Bold:size=16
+URxvt.italicFont: xft:Source Code Pro:style=Italic:size=16
+URxvt.boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=16
