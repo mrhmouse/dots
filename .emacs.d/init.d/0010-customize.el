@@ -9,6 +9,8 @@
  '(coffee-tab-width 4)
  '(cursor-type (quote box))
  '(custom-enabled-themes nil)
+ '(erc-nick "jordan")
+ '(erc-server "localhost")
  '(indent-tabs-mode nil)
  '(tool-bar-mode nil))
 
