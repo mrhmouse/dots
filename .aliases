@@ -63,4 +63,6 @@ alias mkpass='apg -m 16 -x 32 -M sncl'
 # Serve the current directory
 alias serve='python -m http.server'
 
+alias memory_hogs='ps -e -o pid,vsz,comm= | sort -n -k 2 | tail -n12'
+
 # vim: ft=sh
