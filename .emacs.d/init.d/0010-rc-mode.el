@@ -52,19 +52,17 @@
 (defun rc-indent-line ()
   "Indent current line as Plan9 RC shell script"
   (interactive)
-  (let ((indentation
-         (save-excursion
-           (beginning-of-line)
-           (cond
-            ((bobp) 0)
-            ((or (rc-looking-at-continuation)
-                 (rc-under-block-header))
-             (+ 2 (rc-previous-line-indentation)))
-            ((rc-looking-at-block-end)
-             (- (rc-previous-line-indentation) 2))
-            (t
-             (rc-previous-line-indentation))))))
-    (indent-line-to indentation)))
+  (indent-line-to 
+   (save-excursion
+     (beginning-of-line)
+     (cond
+      ((bobp) 0)
+      ((or (rc-looking-at-continuation)
+           (rc-under-block-header))
+       (+ (rc-previous-line-indentation) 2))
+      ((rc-looking-at-block-end)
+       (- (rc-previous-line-indentation) 2))
+      (t (rc-previous-line-indentation))))))
 
 (defun rc-looking-at-block-end ()
   (save-excursion
