@@ -1,0 +1,3 @@
+#!/usr/bin/rc
+MAIL=$home/Mail
+EDITOR=e

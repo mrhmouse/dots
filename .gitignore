@@ -30,6 +30,9 @@
 !.Xresources
 !.bin/
 !.bin/*
+!.rcrc
+!.rc.d/
+!.rc.d/*
 **~
 
 **.elc

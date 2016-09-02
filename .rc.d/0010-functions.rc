@@ -1,0 +1,55 @@
+#!/usr/bin/rc
+
+fn whats { # search for software
+  apt-cache search $* | grep --color'='always '^\S\+' | less -R
+}
+
+fn update { # update the system
+  sudo apt-get update && sudo apt-get upgrade
+}
+
+fn gimme { # install software
+  update && sudo apt-get install $*
+}
+
+fn drop { # remove software
+  sudo apt-get remove $* && sudo apt-get autoremove
+}
+
+fn pop { # pop the head from a list
+  name=$1
+  *=$$name
+  popped=$1
+  shift
+  $name=$*
+  echo $popped
+}
+
+fn push { # (list x ...) push x onto list
+  name=$1 {
+    shift
+    for (x in $*) {
+      $name=($x $$name)
+    }
+  }
+}
+
+fn join { # (list sep) join a list by sep
+  join=() first=1 {
+    for (piece in $list) {
+      if (test $first -eq 1) {
+        first=0
+        join=$piece
+      } else {
+        join=$join^$sep^$piece
+      }
+    }
+
+    echo $join
+  }
+}
+
+fn my_functions { # list functions
+  grep '^fn .*{ #.*' $home^'/.rc.d/0010-functions.rc' \
+    | sed -e 's/^fn //' -e 's/ { #/:/'
+}
