@@ -6,7 +6,7 @@
 (setq common-lisp-hyperspec-root
       "file:///home/jordan/.emacs.d/HyperSpec/")
 
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "sbcl --noinform")
 
 ;; Bind arrow keys in dumb terminals for paredit
 (add-hook 'paredit-mode-hook
