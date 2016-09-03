@@ -1,4 +1,33 @@
-;; rc-mode, a major mode for the Plan 9 shell
+;;; rc-mode.el --- Major mode for the Plan9 rc shell
+
+;; Copyright © Jordan Brown
+
+;; Author: Jordan Brown
+;; URL: https://github.com/mrhmouse/rc-mode.el
+;; Version: 1.0.0
+;; Keywords: rc, plan9, shell
+
+;;; License:
+
+;; The MIT License (MIT)
+
+;; Permission is hereby granted, free of charge, to any person obtaining
+;; a copy of this software and associated documentation files (the "Software"),
+;; to deal in the Software without restriction, including without limitation
+;; the rights to use, copy, modify, merge, publish, distribute, sublicense,
+;; and/or sell copies of the Software, and to permit persons to whom
+;; the Software is furnished to do so, subject to the following conditions:
+;;
+;; The above copyright notice and this permission notice shall be included
+;; in all copies or substantial portions of the Software.
+;;
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+;; EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+;; OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+;; IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+;; DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+;; ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+;; DEALINGS IN THE SOFTWARE.
 
 (defun rc-intersperse (items sep)
   (if (null (cdr items))
@@ -62,7 +91,22 @@
        (+ (rc-previous-line-indentation) 2))
       ((rc-looking-at-block-end)
        (- (rc-previous-line-indentation) 2))
+      ((rc-inside-list-continuation)
+       (rc-start-of-list-on-previous-line))
       (t (rc-previous-line-indentation))))))
+
+(defun rc-start-of-list-on-previous-line ()
+  (save-excursion
+    (rc-previous-line)
+    (end-of-line)
+    (while (not (looking-at "("))
+      (backward-char))
+    (+ 1 (current-column))))
+
+(defun rc-inside-list-continuation ()
+  (save-excursion
+    (rc-previous-line)
+    (looking-at ".*([^)]*$")))
 
 (defun rc-looking-at-block-end ()
   (save-excursion
@@ -72,7 +116,8 @@
 (defun rc-looking-at-continuation ()
   (save-excursion
     (rc-previous-line)
-    (looking-at ".*\\\\$")))
+    (or (looking-at ".*\\\\$")
+        (looking-at ".*([^)]*$"))))
 
 (defun rc-previous-line ()
   (forward-line -1)
