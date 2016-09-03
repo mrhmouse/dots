@@ -1,7 +1,6 @@
 #!/usr/bin/rc
-prompt=('> '
-        '-   ')
+prompt=('> ' '--  ')
+
 fn prompt {
-  echo -n '# '
-  pwd | sed 's_'$home'_~_'
+  echo '# '^`{pwd | sed 's_'$home'_~_'}
 }
