@@ -44,5 +44,5 @@
 
 (add-hook 'sql-mode-hook
           (lambda ()
-            (setq indent-line-function
-                  'sql-indent-line)))
+            (setq-local indent-line-function
+                        'sql-indent-line)))
