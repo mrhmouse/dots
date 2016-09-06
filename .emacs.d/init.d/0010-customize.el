@@ -15,6 +15,7 @@
    (quote
     ("ebfa8d0654af120fff174bc7ec08bf1fef63df97bdeff63161dbff6f61cef747" default)))
  '(electric-indent-mode nil)
+ '(erc-menu-mode t)
  '(erc-nick "jordan")
  '(erc-server "localhost")
  '(fci-rule-color "#f8fce8")
@@ -40,4 +41,8 @@
  '(magit-diff-base-highlight ((t (:background "#eeeebb" :foreground "#000000"))))
  '(magit-diff-removed ((t (:background "#ffdddd" :foreground "#000000"))))
  '(magit-diff-removed-highlight ((t (:background "#eecccc" :foreground "#000000"))))
- '(magit-section-highlight ((t (:background "grey95" :foreground "black")))))
+ '(magit-section-highlight ((t (:background "grey95" :foreground "black"))))
+ '(menu ((t (:inverse-video t))))
+ '(tty-menu-disabled-face ((t (:background "black" :foreground "white"))))
+ '(tty-menu-enabled-face ((t (:background "black" :foreground "green" :weight bold))))
+ '(tty-menu-selected-face ((t (:background "green" :foreground "black")))))
