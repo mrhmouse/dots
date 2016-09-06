@@ -1,25 +1,25 @@
-#!/usr/bin/zsh
-export FOREGROUND=ffffff
-export BACKGROUND=1e1e1e
+#!/usr/bin/rc
+FOREGROUND=ffffff
+BACKGROUND=1e1e1e
 
-export BLACK=5a7260
-export RED=8f423c
-export GREEN=bbbb88
-export YELLOW=f9d25b
-export BLUE=e0ba69
-export MAGENTA=709289
-export CYAN=d13516
-export WHITE=efe2e0
+BLACK=5a7260
+RED=8f423c
+GREEN=bbbb88
+YELLOW=f9d25b
+BLUE=e0ba69
+MAGENTA=709289
+CYAN=d13516
+WHITE=efe2e0
 
-export BOLD_BLACK=8da691
-export BOLD_RED=eeaa88
-export BOLD_GREEN=ccc68d
-export BOLD_YELLOW=eedd99
-export BOLD_BLUE=c9b957
-export BOLD_MAGENTA=ffcbab
-export BOLD_CYAN=c25431
-export BOLD_WHITE=f9f1ed
+BOLD_BLACK=8da691
+BOLD_RED=eeaa88
+BOLD_GREEN=ccc68d
+BOLD_YELLOW=eedd99
+BOLD_BLUE=c9b957
+BOLD_MAGENTA=ffcbab
+BOLD_CYAN=c25431
+BOLD_WHITE=f9f1ed
 
-export CURSOR_COLOR=$YELLOW
+CURSOR_COLOR=$YELLOW
 
 # by jmbi

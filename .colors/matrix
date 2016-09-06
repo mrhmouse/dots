@@ -1,26 +1,26 @@
-#!/usr/bin/zsh
+#!/usr/bin/rc
 
-export FOREGROUND=
-export BACKGROUND=
+FOREGROUND=
+BACKGROUND=
 
-export BLACK=
-export RED=
-export GREEN=
-export YELLOW=
-export BLUE=
-export MAGENTA=
-export CYAN=
-export WHITE=
+BLACK=
+RED=
+GREEN=
+YELLOW=
+BLUE=
+MAGENTA=
+CYAN=
+WHITE=
 
-export BOLD_BLACK=
-export BOLD_RED=
-export BOLD_GREEN=
-export BOLD_YELLOW=
-export BOLD_BLUE=
-export BOLD_MAGENTA=
-export BOLD_CYAN=
-export BOLD_WHITE=
+BOLD_BLACK=
+BOLD_RED=
+BOLD_GREEN=
+BOLD_YELLOW=
+BOLD_BLUE=
+BOLD_MAGENTA=
+BOLD_CYAN=
+BOLD_WHITE=
 
-export CURSOR_COLOR=$YELLOW
+CURSOR_COLOR=$YELLOW
 
 # ok100 - matrix

@@ -1,40 +1,58 @@
-#!/usr/bin/zsh
-set -e
-test -n "$BLACK" \
-     -a -n "$RED" \
-     -a -n "$GREEN" \
-     -a -n "$YELLOW" \
-     -a -n "$BLUE" \
-     -a -n "$MAGENTA" \
-     -a -n "$CYAN" \
-     -a -n "$WHITE" \
-     -a -n "$BOLD_BLACK" \
-     -a -n "$BOLD_RED" \
-     -a -n "$BOLD_GREEN" \
-     -a -n "$BOLD_YELLOW" \
-     -a -n "$BOLD_BLUE" \
-     -a -n "$BOLD_MAGENTA" \
-     -a -n "$BOLD_CYAN" \
-     -a -n "$BOLD_WHITE"
-set +e
+#!/usr/bin/rc
 
-echo -e "\e]P0$BLACK"
-echo -e "\e]P1$RED"
-echo -e "\e]P2$GREEN"
-echo -e "\e]P3$YELLOW"
-echo -e "\e]P4$BLUE"
-echo -e "\e]P5$MAGENTA"
-echo -e "\e]P6$CYAN"
-echo -e "\e]P7$WHITE"
-echo -e "\e]P8$BOLD_BLACK"
-echo -e "\e]P9$BOLD_RED"
-echo -e "\e]PA$BOLD_GREEN"
-echo -e "\e]PB$BOLD_YELLOW"
-echo -e "\e]PC$BOLD_BLUE"
-echo -e "\e]PD$BOLD_MAGENTA"
-echo -e "\e]PE$BOLD_CYAN"
-echo -e "\e]PF$BOLD_WHITE"
-echo -e "\e]10;#$FOREGROUND\a"
-echo -e "\e]11;#$BACKGROUND\a"
-echo -e "\e]12;#$CURSOR_COLOR\a"
-clear
+fn exists {
+  ! ~ $#* 0
+}
+
+fn has_color {
+  exists $$1 && exists $^(BOLD_$1)
+}
+
+fn has_theme {
+  has_color BLACK && \
+    has_color RED && \
+    has_color GREEN && \
+    has_color YELLOW && \
+    has_color BLUE && \
+    has_color MAGENTA && \
+    has_color CYAN && \
+    has_color WHITE
+}
+
+fn esc {
+  printf '\e]%s%s' $1 $2
+}
+
+if (has_theme) {
+  esc P0 $BLACK
+  esc P1 $RED
+  esc P2 $GREEN
+  esc P3 $YELLOW
+  esc P4 $BLUE
+  esc P5 $MAGENTA
+  esc P6 $CYAN
+  esc P7 $WHITE
+
+  esc P8 $BOLD_BLACK
+  esc P9 $BOLD_RED
+  esc PA $BOLD_GREEN
+  esc PB $BOLD_YELLOW
+  esc PC $BOLD_BLUE
+  esc PD $BOLD_MAGENTA
+  esc PE $BOLD_CYAN
+  esc PF $BOLD_WHITE
+
+  if (exists $FOREGROUND) {
+    printf '\e]10;#%s\a' $FOREGROUND
+  }
+
+  if (exists $BACKGROUND) {
+    printf '\e]11;#%s\a' $BACKGROUND
+  }
+
+  if (exists $CURSOR_COLOR) {
+    printf '\e]12;#%s\a' $CURSOR_COLOR
+  }
+} else {
+  echo 'No theme!'
+}

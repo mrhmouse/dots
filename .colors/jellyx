@@ -4,30 +4,30 @@
 ## heavily based on bubblegum, by Kyla
 ## https://bbs.archlinux.org/viewtopic.php?pid=1033513#p1033513
 
-export BLACK=000000
-export BOLD_BLACK=0a0a0a
+BLACK=000000
+BOLD_BLACK=0a0a0a
 
-export RED=d75f5f
-export BOLD_RED=d787af
+RED=d75f5f
+BOLD_RED=d787af
 
-export GREEN=00af87
-export BOLD_GREEN=5faf5f
+GREEN=00af87
+BOLD_GREEN=5faf5f
 
-export YELLOW=afd75f
-export BOLD_YELLOW=d7af5f
+YELLOW=afd75f
+BOLD_YELLOW=d7af5f
 
-export BLUE=5fafd7
-export BOLD_BLUE=87afd7
+BLUE=5fafd7
+BOLD_BLUE=87afd7
 
-export MAGENTA=8787af
-export BOLD_MAGENTA=8787d7
+MAGENTA=8787af
+BOLD_MAGENTA=8787d7
 
-export CYAN=00afd7
-export BOLD_CYAN=87afff
+CYAN=00afd7
+BOLD_CYAN=87afff
 
-export WHITE=ffffff
-export BOLD_WHITE=ffffff
+WHITE=ffffff
+BOLD_WHITE=ffffff
 
-export BACKGROUND=000000
-export FOREGROUND=a8a8a8
-export CURSOR_COLOR=$BOLD_BLUE
+BACKGROUND=000000
+FOREGROUND=a8a8a8
+CURSOR_COLOR=$BOLD_BLUE

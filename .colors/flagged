@@ -1,23 +1,23 @@
-#!/usr/bin/zsh
-export FOREGROUND=dcdace
-export BACKGROUND=1e1e1e
+#!/usr/bin/rc
+FOREGROUND=dcdace
+BACKGROUND=1e1e1e
 
-export BLACK=1e1e1e
-export RED=E20123
-export GREEN=4da87f
-export YELLOW=a4a84d
-export BLUE=30848f
-export MAGENTA=e30097
-export CYAN=4ea3a8
-export WHITE=dcdace
+BLACK=1e1e1e
+RED=E20123
+GREEN=4da87f
+YELLOW=a4a84d
+BLUE=30848f
+MAGENTA=e30097
+CYAN=4ea3a8
+WHITE=dcdace
 
-export BOLD_BLACK=2e2e2e
-export BOLD_RED=f81c38
-export BOLD_GREEN=4da852
-export BOLD_YELLOW=a87f4d
-export BOLD_BLUE=524da8
-export BOLD_MAGENTA=bd00e3
-export BOLD_CYAN=4d76a8
-export BOLD_WHITE=eceade
+BOLD_BLACK=2e2e2e
+BOLD_RED=f81c38
+BOLD_GREEN=4da852
+BOLD_YELLOW=a87f4d
+BOLD_BLUE=524da8
+BOLD_MAGENTA=bd00e3
+BOLD_CYAN=4d76a8
+BOLD_WHITE=eceade
 
-export CURSOR_COLOR=$BLUE
+CURSOR_COLOR=$BLUE

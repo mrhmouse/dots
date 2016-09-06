@@ -1,25 +1,25 @@
-#!/usr/bin/zsh
+#!/usr/bin/rc
 
-export FOREGROUND=ffffff
-export BACKGROUND=000000
+FOREGROUND=ffffff
+BACKGROUND=000000
 
-export BLACK=251f1f
-export RED=eb4509
-export GREEN=94e76b
-export YELLOW=ffac18
-export BLUE=46aede
-export MAGENTA=e32c57
-export CYAN=d6dbac
-export WHITE=efefef
+BLACK=251f1f
+RED=eb4509
+GREEN=94e76b
+YELLOW=ffac18
+BLUE=46aede
+MAGENTA=e32c57
+CYAN=d6dbac
+WHITE=efefef
 
-export BOLD_BLACK=5e5e5e
-export BOLD_RED=eb4509
-export BOLD_GREEN=95e76b
-export BOLD_YELLOW=ffac18
-export BOLD_BLUE=46aede
-export BOLD_MAGENTA=e32c57
-export BOLD_CYAN=d6dbac
-export BOLD_WHITE=efefef
+BOLD_BLACK=5e5e5e
+BOLD_RED=eb4509
+BOLD_GREEN=95e76b
+BOLD_YELLOW=ffac18
+BOLD_BLUE=46aede
+BOLD_MAGENTA=e32c57
+BOLD_CYAN=d6dbac
+BOLD_WHITE=efefef
 
-export CURSOR_COLOR=$YELLOW
+CURSOR_COLOR=$YELLOW
 
