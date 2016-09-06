@@ -1,51 +1,55 @@
-#!/usr/bin/zsh
+#!/usr/bin/rc
 
-escape() {
-    echo -en '\e'
-    echo -n "[${1}m"
+fn escape {
+  printf '\e[%sm' $1
 }
 
-block() {
-    # echo -n '░█▄▀█░'
-    echo -n '▄▀'
+fn block {
+  printf '▄▀'
 }
 
-sep() {
-    echo -n '  '
+fn sep {
+  printf '  '
 }
 
-chunk() {
-    escape $1
-    block
-    block
+fn chunk {
+  escape $1
+  block
+  block
 }
 
-row() {
+fn row {
+  sep
+  for (n) {
+    chunk $n
     sep
-    for n in "$@" ; do
-        chunk "$n"
-        sep
-    done
-    echo
+  }
+  
+  echo
 }
 
-fg-row() {
-    escape 1
-    row 30 31 32 33 34 35 36 37
-    escape 22
-    row 30 31 32 33 34 35 36 37
+fn fg_row {
+  escape 1
+  row 30 31 32 33 34 35 36 37
+  escape 22
+  row 30 31 32 33 34 35 36 37
 }
 
-grid() {
-    escape 0
-    fg-row
-    for n in 40 41 42 43 44 45 46 47 ; do
-        escape $n
-        fg-row
-    done
-    escape 0
+fn grid {
+  escape 0
+  fg_row
+  for (n in 40 41 42 43 44 45 46 47) {
+    escape $n
+    fg_row
+  }
+  
+  escape 0
 }
 
-CACHEFILE=~/.colorgrid.cache
-[[ -e $CACHEFILE ]] || grid > $CACHEFILE
-cat $CACHEFILE
+cachefile=$home/.colorgrid.cache {
+  if (! test -e $cachefile) {
+    grid > $cachefile
+  }
+  
+  cat $cachefile
+}

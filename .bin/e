@@ -1,14 +1,15 @@
-#!/usr/bin/zsh
+#!/usr/bin/env rc
 
 pgrep emacs || emacs --daemon
 
-if test "$1" = - ; then
-    shift
-    BUFFER="$(mktemp)"
-    cat > "$BUFFER"
-    emacsclient -c "$BUFFER" "$@"
-    cat "$BUFFER"
-    rm "$BUFFER" 2>&1 >/dev/null
-else
-    exec emacsclient -c "$@"
-fi
+if (~ $1 -) {
+  shift
+  buffer=`{mktemp} {
+    cat > $buffer
+    emacsclient -c $buffer $*
+    cat $buffer
+    rm $buffer >[2=1] >/dev/null
+  }
+} else {
+  exec emacsclient -c $*
+}

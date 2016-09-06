@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/usr/bin/rc
 
-read HEX
 
-c() {
-  echo "0x$(echo $HEX | cut -c "$1")"
+hex=`` () {head -n1}
+
+fn c {
+  printf '0x%s' `{echo $hex | cut -c $1}
 }
 
-printf '%i,%i,%i' $(c 1,2) $(c 3,4) $(c 5,6)
+printf '%i,%i,%i\n' `{c 1,2} `{c 3,4} `{c 5,6}

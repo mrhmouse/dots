@@ -1,33 +1,32 @@
-#!/usr/bin/zsh
+#!/usr/bin/rc
 
-c() {
-    echo "$1" | hex2rgb
+fn c {
+    echo $1 | hex2rgb
 }
 
-echo "
-FontHeight=12
-Font=DejaVu Sans Mono
-FontSmoothing=none
-CursorType=block
-Columns=100
-Rows=35
-
-ForegroundColour=$(c $FOREGROUND)
-BackgroundColour=$(c $BACKGROUND)
-CursorColour=$(c $CURSOR_COLOR)
-Black=$(c $BLACK)
-BoldBlack=$(c $BOLD_BLACK)
-Red=$(c $RED)
-BoldRed=$(c $BOLD_RED)
-Green=$(c $GREEN)
-BoldGreen=$(c $BOLD_GREEN)
-Yellow=$(c $YELLOW)
-BoldYellow=$(c $BOLD_YELLOW)
-Blue=$(c $BLUE)
-BoldBlue=$(c $BOLD_BLUE)
-Magenta=$(c $MAGENTA)
-BoldMagenta=$(c $BOLD_MAGENTA)
-Cyan=$(c $CYAN)
-BoldCyan=$(c $BOLD_CYAN)
-White=$(c $WHITE)
-BoldWhite=$(c $BOLD_WHITE)"
+echo 'FontHeight=12'
+echo 'Font=DejaVu Sans Mono'
+echo 'FontSmoothing=none'
+echo 'CursorType=block'
+echo 'Columns=100'
+echo 'Rows=35'
+echo ''
+echo 'ForegroundColour='^`{c $FOREGROUND}
+echo 'BackgroundColour='^`{c $BACKGROUND}
+echo 'CursorColour='^`{c $CURSOR_COLOR}
+echo 'Black='^`{c $BLACK}
+echo 'BoldBlack='^`{c $BOLD_BLACK}
+echo 'Red='^`{c $RED}
+echo 'BoldRed='^`{c $BOLD_RED}
+echo 'Green='^`{c $GREEN}
+echo 'BoldGreen='^`{c $BOLD_GREEN}
+echo 'Yellow='^`{c $YELLOW}
+echo 'BoldYellow='^`{c $BOLD_YELLOW}
+echo 'Blue='^`{c $BLUE}
+echo 'BoldBlue='^`{c $BOLD_BLUE}
+echo 'Magenta='^`{c $MAGENTA}
+echo 'BoldMagenta='^`{c $BOLD_MAGENTA}
+echo 'Cyan='^`{c $CYAN}
+echo 'BoldCyan='^`{c $BOLD_CYAN}
+echo 'White='^`{c $WHITE}
+echo 'BoldWhite='^`{c $BOLD_WHITE}
