@@ -1,6 +1,11 @@
 #!/usr/bin/rc
-prompt=('> ' '--  ')
-
 fn prompt {
-  echo '# '^`{pwd | sed 's_'$home'_~_'}
+  h=() color=32 s=$status(1) {
+    if (! ~ $s 0) {
+      color=31
+    }
+
+    h=`{pwd | sed 's_'$home'_~_'}
+    prompt=(`` () {printf '\e[%im# %s\e[0m\n' $color $h} '- ')
+  }
 }
