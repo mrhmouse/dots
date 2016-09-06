@@ -53,3 +53,12 @@ fn my_functions { # list functions
   grep '^fn .*{ #.*' $home^'/.rc.d/0010-functions.rc' \
     | sed -e 's/^fn //' -e 's/ { #/:/'
 }
+
+fn cls { # clear ; ls
+  clear
+  ls
+}
+
+fn attach { # attach to an existing tmux session, or create a new one
+  tmux attach || tmux
+}
