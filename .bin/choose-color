@@ -1,69 +1,68 @@
-#!/usr/bin/zsh
+#!/usr/bin/rc
 
-is_shell_script() {
-    local filename="$1"
-    local first_line="$(cat "$filename" | head -n1)"
-    test "$first_line" = '#!/usr/bin/zsh'
+fn is_rc_script {
+  first_line=`{head $1 -n1} {
+    test $first_line '=' '#!/usr/bin/rc'
+  }
 }
 
-POSITION=1
-AVAILABLE_COLORS=()
-for color_file in ~/.colors/* ; do
-    if is_shell_script "$color_file" ; then
-        AVAILABLE_COLORS+=("$color_file")
-    fi
-done
-
-
-show_colors() {
-    tmpl2linux
-    colorgrid
-    echo "Currently viewing: $(basename "${AVAILABLE_COLORS[POSITION]}")"
-    echo
+position=1
+available_colors=()
+for (color_file in $home/.colors/*) {
+  if (is_rc_script $color_file) {
+    push available_colors $color_file
+  }
 }
 
-get_next_command() {
-    echo '[N]ext theme'
-    echo '[P]revious theme'
-    local line=''
-    read -r line
-    line="${line[1]}"
-    if test "$line" = 'N' -o "$line" = 'n' ; then
-        POSITION=$((POSITION + 1))
-    elif test "$line" = 'P' -o "$line" = 'p' ; then
-        POSITION=$((POSITION - 1))
-    else
-        get_next_command
-        return
-    fi
-
-    if test "$POSITION" -eq 0 ; then
-        POSITION=$#AVAILABLE_COLORS
-    elif test "$POSITION" -gt $#AVAILABLE_COLORS ; then
-        POSITION=1
-    fi
+fn show_colors {
+  tmpl2linux
+  colorgrid
+  echo 'Currently viewing: '^`{basename $available_colors($position)}
+  echo
 }
 
-set_colors() {
-    local color="${AVAILABLE_COLORS[POSITION]}"
-    rm ~/.current-colors
-    ln -s "$color" ~/.current-colors
-    source "$color"
+fn get_next_command {
+  echo '[N]ext theme'
+  echo '[P]revious theme'
+  line=`{head -n1 | awk '{print $1}'} {
+    if (~ $line [Nn]*) {
+      position=`{echo 1 + $position | bc}
+    } else if (~ $line [Pp]*) {
+      position=`{echo $position - 1 | bc}
+    } else {
+      get_next_command
+      return
+    }
+
+    if (~ $position 0) {
+      position=$#available_colors
+    } else if (test $position -gt $#available_colors) {
+      position=1
+    }
+  }
 }
 
-run() {
-    clear
-    set_colors
-    show_colors
-    get_next_command
-    run
+fn set_colors {
+  color=$available_colors($position) {
+    rm $home/.current-colors
+    ln -s $color $home/.current-colors
+    . $color
+  }
 }
 
-if [[ $# -eq 1 ]] && [[ -e "${HOME}/.colors/$1" ]] ; then
-    rm ~/.current-colors
-    ln -s "${HOME}/.colors/$1" ~/.current-colors
-    source ~/.current-colors
-    tmpl2linux
-else
-    run
-fi
+fn run {
+  clear
+  set_colors
+  show_colors
+  get_next_command
+  run
+}
+
+if (~ $#* 1 && test -e $home/.colors/$1) {
+  rm $home/.current-colors
+  ln -s $home/.colors/$1 $home/.current-colors
+  . $home/.current-colors
+  tmpl2linux
+} else {
+  run
+}
