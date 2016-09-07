@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 ## Example scheme
 ## {
@@ -27,7 +27,7 @@
 ## }
 
 colors=`{jq -r '[.foreground,.background]+.color|map(.[1:])|.[]'}
-echo '#!/usr/bin/rc'
+echo '#!/usr/bin/env rc'
 echo 'export FOREGROUND='^$colors(1)
 echo 'export BACKGROUND='^$colors(2)
 echo ''

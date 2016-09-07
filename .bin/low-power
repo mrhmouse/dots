@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 xbacklight -set 0
 redshift >[2=1] >/dev/null &
 disown

@@ -10,6 +10,8 @@ if (~ $1 -) {
     cat $buffer
     rm $buffer >[2=1] >/dev/null
   }
+
+  return
 } else {
-  exec emacsclient -c $*
+  emacsclient -c $*
 }

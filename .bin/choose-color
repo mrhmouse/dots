@@ -1,8 +1,8 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 fn is_rc_script {
   first_line=`{head $1 -n1} {
-    test $first_line '=' '#!/usr/bin/rc'
+    test $first_line '=' '#!/usr/bin/env rc'
   }
 }
 

@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 fn has_color {
   ! ~ $#$1 0 && ! ~ $#(BOLD_$1) 0
