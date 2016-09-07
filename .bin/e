@@ -8,7 +8,7 @@ if (~ $1 -) {
     cat > $buffer
     emacsclient -c $buffer $*
     cat $buffer
-    rm $buffer >[2=1] >/dev/null
+    rm $buffer >/dev/null >[2=1]
   }
 
   return

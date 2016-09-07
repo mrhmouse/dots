@@ -1,3 +1,4 @@
 #!/usr/bin/rc
 MAIL=$home/Mail
 EDITOR=e
+SUDO_EDITOR=emacs
