@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 FOREGROUND=adadad
 BACKGROUND=202020

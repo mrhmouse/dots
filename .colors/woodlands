@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 FOREGROUND=acacac
 BACKGROUND=121212

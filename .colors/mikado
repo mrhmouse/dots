@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 # mikado
 BLACK=322a2c
 BOLD_BLACK=46423b

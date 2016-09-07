@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 BLACK=222222
 BOLD_BLACK=454545

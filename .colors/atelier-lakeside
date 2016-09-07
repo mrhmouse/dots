@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 FOREGROUND=7ea2b4
 BACKGROUND=161b1d
 

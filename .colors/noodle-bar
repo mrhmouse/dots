@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 BLACK=1e1e1e
 BOLD_BLACK=202020
 RED=F32435

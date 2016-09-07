@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 FOREGROUND=F3F0E7
 BACKGROUND=07000a
 CURSOR_COLOR=FCFE15

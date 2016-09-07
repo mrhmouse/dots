@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 BLACK=151515
 RED=e03030
 GREEN=b0c0b9
