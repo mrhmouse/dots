@@ -28,25 +28,22 @@
 
 colors=`{jq -r '[.foreground,.background]+.color|map(.[1:])|.[]'}
 echo '#!/usr/bin/env rc'
-echo 'export FOREGROUND='^$colors(1)
-echo 'export BACKGROUND='^$colors(2)
-echo ''
-echo 'export BLACK='^$colors(3)
-echo 'export RED='^$colors(4)
-echo 'export GREEN='^$colors(5)
-echo 'export YELLOW='^$colors(6)
-echo 'export BLUE='^$colors(7)
-echo 'export MAGENTA='^$colors(8)
-echo 'export CYAN='^$colors(9)
-echo 'export WHITE='^$colors(10)
-echo ''
-echo 'export BOLD_BLACK='^$colors(11)
-echo 'export BOLD_RED='^$colors(12)
-echo 'export BOLD_GREEN='^$colors(13)
-echo 'export BOLD_YELLOW='^$colors(14)
-echo 'export BOLD_BLUE='^$colors(15)
-echo 'export BOLD_MAGENTA='^$colors(16)
-echo 'export BOLD_CYAN='^$colors(17)
-echo 'export BOLD_WHITE='^$colors(18)
-echo ''
-echo 'export CURSOR_COLOR=$YELLOW'
+echo 'FOREGROUND='^$colors(1)
+echo 'BACKGROUND='^$colors(2)
+echo 'BLACK='^$colors(3)
+echo 'RED='^$colors(4)
+echo 'GREEN='^$colors(5)
+echo 'YELLOW='^$colors(6)
+echo 'BLUE='^$colors(7)
+echo 'MAGENTA='^$colors(8)
+echo 'CYAN='^$colors(9)
+echo 'WHITE='^$colors(10)
+echo 'BOLD_BLACK='^$colors(11)
+echo 'BOLD_RED='^$colors(12)
+echo 'BOLD_GREEN='^$colors(13)
+echo 'BOLD_YELLOW='^$colors(14)
+echo 'BOLD_BLUE='^$colors(15)
+echo 'BOLD_MAGENTA='^$colors(16)
+echo 'BOLD_CYAN='^$colors(17)
+echo 'BOLD_WHITE='^$colors(18)
+echo 'CURSOR_COLOR=$YELLOW'

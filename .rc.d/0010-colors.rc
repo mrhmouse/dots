@@ -1,0 +1,2 @@
+#!/usr/bin/env rc
+. $home/.current-colors >/dev/null >[2=1]
