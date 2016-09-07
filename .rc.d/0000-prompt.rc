@@ -6,6 +6,6 @@ fn prompt {
     }
 
     h=`{pwd | sed 's_'$home'_~_'}
-    prompt=(`` () {printf '\e[%im# %s\e[0m\n' $color $h} '- ')
+    prompt=(`` () {printf '\e[%im# %s\e[0m on %s\n' $color $h `hostname} '- ')
   }
 }
