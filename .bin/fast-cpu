@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env rc
 echo 'Swapping to performance governor'
 sudo cpupower frequency-set -g performance
 
