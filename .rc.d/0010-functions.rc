@@ -62,3 +62,7 @@ fn cls { # clear ; ls
 fn attach { # attach to an existing tmux session, or create a new one
   tmux attach || tmux
 }
+
+fn jmp { # jump into a directory, creating it if needed
+  mkdir -p $1 && cd $1
+}
