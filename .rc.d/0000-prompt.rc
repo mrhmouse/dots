@@ -1,11 +1,15 @@
 #!/usr/bin/rc
+nl='
+'
+
 fn prompt {
   h=() color=32 s=$status(1) {
     if (! ~ $s 0) {
       color=31
     }
 
-    h=`{pwd | sed 's_'$home'_~_'}
+    h=``($nl){pwd | sed 's_'$home'_~_'}
+    h=$h(1)
     prompt=(`` () {printf '\e[%im# %s\e[0m on %s\n' $color $h `hostname} '- ')
   }
 }
