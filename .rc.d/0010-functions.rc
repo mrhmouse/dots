@@ -66,3 +66,16 @@ fn attach { # attach to an existing tmux session, or create a new one
 fn jmp { # jump into a directory, creating it if needed
   mkdir -p $1 && cd $1
 }
+
+fn watchimg { # watch for new files in the current directory, and display them via $1
+  while(true) {
+    f=`{inotifywait -e create .} {
+      clear
+      $1 $f(3)
+    }
+  }
+}
+
+fn makedeb { # build a debian package from source
+  dpkg-buildpackage -rfakeroot -uc -b
+}
