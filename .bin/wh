@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+from bs4 import BeautifulSoup
+from sys import argv
+import requests
+
+def get_soup(url, params=None):
+    r = requests.get(url, params=params)
+    return BeautifulSoup(r.text, 'html5lib')
+
+def search(query, page=1):
+    soup = get_soup('https://alpha.wallhaven.cc/search',
+                    { 'q': query, 'page': page })
+    links = soup.find_all('a', 'preview')
+    full_links = []
+    for link in links:
+        image_page = get_soup(link['href'])
+        image_url = 'https:' + image_page.find(id='wallpaper')['src']
+        yield image_url
+
+if len(argv) < 2:
+    name = argv[0] or 'wallpaper.py3'
+    print('Usage:  %s <query> [page number]' % (name,))
+else:
+    page = '1'
+    if len(argv) >= 3:
+        page = argv[2]
+    for link in search(argv[1], page=page):
+        print(link)
