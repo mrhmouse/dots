@@ -2,3 +2,4 @@
 MAIL=$home/Mail
 EDITOR=e
 SUDO_EDITOR=emacs
+history=$home/.history
