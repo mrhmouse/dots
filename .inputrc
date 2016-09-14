@@ -1,0 +1,13 @@
+set editing-mode emacs
+set expand-tilde on
+set history-size 10240
+set keymap emacs
+set mark-directories on
+set page-completions on
+set show-all-if-ambiguous on
+
+Control-p: history-substring-search-backward
+Control-n: history-substring-search-forward
+Meta-p: previous-history
+Meta-n: next-history
+TAB: menu-complete
