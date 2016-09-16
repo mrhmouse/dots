@@ -120,7 +120,20 @@ fn getwalls {
 ###################
 
 fn my_functions { # list functions
-  # TODO port this to awk & list banners too
-  grep '^fn .*{ #.*' $home^'/.rc.d/0010-functions.rc' \
-    | sed -e 's/^fn //' -e 's/ { #/:/'
+  @ {
+    awk_script = '
+    /^##/ {
+      if (banner == 0) { print "" };
+      print "\x1b[34m" $0 "\x1b[0m";
+      banner=1
+    }
+
+    /^fn (.*) \{ # (.*)$/ {
+      banner=0;
+      print("\x1b[31m" $2 ":\x1b[0m" substr($0, index($0, "#") + 1));
+    }
+    '
+
+    awk $awk_script $home/.rc.d/0010-functions.rc
+  }
 }
