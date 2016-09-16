@@ -1,5 +1,9 @@
 #!/usr/bin/rc
 
+###############################
+## Debian package management ##
+###############################
+
 fn whats { # search for software
   apt-cache search $* | grep --color'='always '^\S\+' | less -R
 }
@@ -15,6 +19,14 @@ fn gimme { # install software
 fn drop { # remove software
   sudo apt-get remove $* && sudo apt-get autoremove
 }
+
+fn makedeb { # build a debian package from source
+  dpkg-buildpackage -rfakeroot -uc -b
+}
+
+#######################
+## rc list functions ##
+#######################
 
 fn pop { # pop the head from a list
   name=$1
@@ -49,10 +61,9 @@ fn join { # (list sep) join a list by sep
   }
 }
 
-fn my_functions { # list functions
-  grep '^fn .*{ #.*' $home^'/.rc.d/0010-functions.rc' \
-    | sed -e 's/^fn //' -e 's/ { #/:/'
-}
+#########################
+## Shorthand functions ##
+#########################
 
 fn cls { # clear ; ls
   clear
@@ -67,6 +78,10 @@ fn jmp { # jump into a directory, creating it if needed
   mkdir -p $1 && cd $1
 }
 
+###########
+## papes ##
+###########
+
 fn watchimg { # watch for new files in the current directory, and display them via $*
   while(true) {
     f=`{inotifywait -e create .} {
@@ -74,10 +89,6 @@ fn watchimg { # watch for new files in the current directory, and display them v
       $* $f(3)
     }
   }
-}
-
-fn makedeb { # build a debian package from source
-  dpkg-buildpackage -rfakeroot -uc -b
 }
 
 fn getwalls {
@@ -90,4 +101,14 @@ fn getwalls {
       curl $i -O
     }
   }
+}
+
+###################
+## Introspection ##
+###################
+
+fn my_functions { # list functions
+  # TODO port this to awk & list banners too
+  grep '^fn .*{ #.*' $home^'/.rc.d/0010-functions.rc' \
+    | sed -e 's/^fn //' -e 's/ { #/:/'
 }
