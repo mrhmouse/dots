@@ -24,6 +24,18 @@ fn makedeb { # build a debian package from source
   dpkg-buildpackage -rfakeroot -uc -b
 }
 
+fn howdoi { # print executable files given by a package
+  for (f in `{dpkg -L $1}) {
+    if (test -x $f && ! test -d $f) {
+      echo $f
+    }
+  }
+}
+
+fn about { # print man-pages given by a package
+  basename -a `{dpkg -L $1 | grep '^/usr/share/man/.*gz'} | sort
+}
+
 #######################
 ## rc list functions ##
 #######################
