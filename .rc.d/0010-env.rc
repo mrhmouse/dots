@@ -1,5 +1,12 @@
 #!/usr/bin/rc
 MAIL=$home/Mail
+
 EDITOR=e
 SUDO_EDITOR=emacs
+
+LANG='en_US.UTF-8'
+LC_ALL=$LANG
+
+PAGER=less
+
 history=$home/.history
