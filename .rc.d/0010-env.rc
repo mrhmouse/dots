@@ -10,3 +10,5 @@ LC_ALL=$LANG
 PAGER=less
 
 history=$home/.history
+
+LS_COLORS='no=0:fi=0:di=44;37:ln=36:or=41;37:mi=41;37:pi=32:so=32;47:bd=45;37:cd=45;37:ex=33;40:'

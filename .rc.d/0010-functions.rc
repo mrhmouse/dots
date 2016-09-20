@@ -77,9 +77,13 @@ fn join { # (list sep) join a list by sep
 ## Shorthand functions ##
 #########################
 
+fn l { # ls --color=always
+  ls --color'='always $*
+}
+
 fn cls { # clear ; ls
   clear
-  ls
+  l
 }
 
 fn attach { # attach to an existing tmux session, or create a new one
@@ -103,7 +107,7 @@ fn watchimg { # watch for new files in the current directory, and display them v
   }
 }
 
-fn getwalls {
+fn getwalls { # (query, [page]) download wallpapers
   page=1 {
     if (~ $#* 2) {
       page=$2
