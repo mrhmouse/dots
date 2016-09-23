@@ -1,6 +1,7 @@
 *
 !.gitignore
-!.git-aliases
+!.git.d/
+!.git.d/*
 !.colors/
 !.colors/*
 !.config/
