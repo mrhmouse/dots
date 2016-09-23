@@ -4,7 +4,9 @@
 (add-hook 'comint-mode-hook 'paredit-mode)
 
 (setq common-lisp-hyperspec-root
-      "file:///home/jordan/.emacs.d/HyperSpec/")
+      (concat "file://"
+              (getenv "HOME")
+              "/.emacs.d/HyperSpec/"))
 
 (setq inferior-lisp-program "sbcl --noinform")
 
