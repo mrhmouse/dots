@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.git-aliases
 !.colors/
 !.colors/*
 !.config/

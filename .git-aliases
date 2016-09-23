@@ -1,0 +1,22 @@
+[pretty]
+short-timestamp = %C(bold blue)%h%C(magenta)% d%Creset%C(dim white)% an%Creset %C(green)(%ar)%n%C(yellow)%<(70,trunc)%aD%n
+timestamp = %C(bold blue)%h%C(magenta)% d%Creset%C(dim white)% an%Creset%C(green) (%ar)%Creset%C(yellow)%<(50,trunc)% aD%n%Creset%<(70,trunc)%s
+standup = %C(blue)* %C(bold green)%s%n%Creset%w(70,2,2)%b
+
+[alias]
+amend = commit --amend
+br = branch
+ch = checkout
+fa = fetch --all
+ff = pull --ff-only
+lg = log --graph --pretty=timestamp
+lga = !git lg --all
+nuke = !echo NUKING UNCOMMITTED CHANGES && git reset --hard && git clean -fd
+pf = push -f
+ri = rebase -i
+show-aliases = config --get-regexp 'alias.*'
+slg = log --all --graph --simplify-by-decoration --pretty=short-timestamp
+staged = diff --staged
+st = status
+standup = !git log --since yesterday --author $(git config user.email) --pretty=standup
+unstage = reset HEAD --
