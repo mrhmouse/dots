@@ -25,7 +25,7 @@ fn makedeb { # build a debian package from source
 }
 
 fn howdoi { # print executable files given by a package
-  for (f in `{dpkg -L $1}) {
+  f = () for (f in `{dpkg -L $1}) {
     if (test -x $f && ! test -d $f) {
       echo $f
     }
@@ -52,7 +52,7 @@ fn pop { # pop the head from a list
 fn push { # (list x ...) push x onto list
   name=$1 {
     shift
-    for (x in $*) {
+    x = () for (x in $*) {
       $name=($x $$name)
     }
   }
@@ -113,8 +113,10 @@ fn getwalls { # (query, [page]) download wallpapers
       page=$2
     }
 
-    for (i in `{wh $1 $page}) {
-      curl $i -O
+    i = () for (i in `{wh $1 $page}) {
+      echo -n `{basename $i}
+      curl $i -Os
+      echo ' ... DONE'
     }
   }
 }
