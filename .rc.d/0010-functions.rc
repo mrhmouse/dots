@@ -94,6 +94,13 @@ fn jmp { # jump into a directory, creating it if needed
   mkdir -p $1 && cd $1
 }
 
+fn pne { # perl -ne while (/.../g) { print ...\n }
+  x = $2 {
+    if (~ $x ()) { x = '$1' }
+    perl -ne 'while (/'$1'/g) { print "'$x'\n" }'
+  }
+}
+
 ###########
 ## papes ##
 ###########
