@@ -1,39 +1,75 @@
 #!/usr/bin/rc
 
-###############################
-## Debian package management ##
-###############################
+if (~ `{uname -a} *Debian*) {
+  os_flavor=debian
+} else {
+  os_flavor=arch
+}
+
+########################
+## package management ##
+########################
 
 fn whats { # search for software
-  apt-cache search $* | grep --color'='always '^\S\+' | less -R
+  if (~ $os_flavor debian) {
+    apt-cache search $* | grep --color'='always '^\S\+' | less -R
+  } else {
+    pacman --color always -Ss $* | less -R
+  }
 }
 
 fn update { # update the system
-  sudo apt-get update && sudo apt-get upgrade
+  if (~ $os_flavor debian) {
+    sudo apt-get update && sudo apt-get upgrade
+  } else {
+    sudo pacman -Syu
+  }
 }
 
 fn gimme { # install software
-  update && sudo apt-get install $*
+  if (~ $os_flavor debian) {
+    update && sudo apt-get install $*
+  } else {
+    update && sudo pacman -S $*
+  }
 }
 
 fn drop { # remove software
-  sudo apt-get remove $* && sudo apt-get autoremove
+  if (~ $os_flavor debian) {
+    sudo apt-get remove $* && sudo apt-get autoremove
+  } else {
+    sudo pacman -Rs $*
+  }
 }
 
-fn makedeb { # build a debian package from source
-  dpkg-buildpackage -rfakeroot -uc -b
+if (~ $os_flavor debian) {
+  fn makedeb { # build a debian package from source ONLY ON DEBIAN
+    dpkg-buildpackage -rfakeroot -uc -b
+  }
 }
 
 fn howdoi { # print executable files given by a package
-  f = () for (f in `{dpkg -L $1}) {
-    if (test -x $f && ! test -d $f) {
-      echo $f
+  if (~ $os_flavor debian) {
+    f = () for (f in `{dpkg -L $1}) {
+      if (test -x $f && ! test -d $f) {
+        echo $f
+      }
+    }
+  } else {
+    f = () for (f in `{pacman -Ql $1 | cut -f2 -d' '}) {
+      if (test -x $f && ! test -d $f) {
+        echo $f
+      }
     }
   }
 }
 
 fn about { # print man-pages given by a package
-  basename -a `{dpkg -L $1 | grep '^/usr/share/man/.*gz'} | sort
+  if (~ $os_flavor debian) {
+    basename -a `{dpkg -L $1 | grep '^/usr/share/man/.*gz'} | sort
+  } else {
+    basename -a `{pacman -Ql $1 | cut -f2 -d' ' | grep '^/usr/share/man/.*gz'} | sort
+  }
 }
 
 #######################
