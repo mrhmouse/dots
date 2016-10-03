@@ -9,7 +9,7 @@
 		  flymake-rust
                   javadoc-lookup
                   magit
-		  god-mode)))
+                  smart-tabs-mode)))
   (dolist (package packages)
     (unless (package-installed-p package)
       (package-install package))))

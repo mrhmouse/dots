@@ -1,0 +1,1 @@
+(smart-tabs-insinuate 'java)
