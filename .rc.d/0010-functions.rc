@@ -72,6 +72,27 @@ fn about { # print man-pages given by a package
   }
 }
 
+if (~ $os_flavor arch) {
+  fn aurfind { # ON ARCH find an AUR package
+    @ {
+      url = 'https://aur.archlinux.org/rpc?v=5&type=search&arg='
+      curl $url^$^* -s | jq '.results[]' -C | less -R
+    }
+  }
+
+  fn aurget { # ON ARCH install an AUR package
+    @ {
+      aur = 'https://aur.archlinux.org'
+      url = $aur'/rpc?v=5&type=info&arg='^$^*
+      pkg_url = `{curl -s $url | jq '.results[0].URLPath' -r}
+      cd $home/aur
+      curl $aur^$pkg_url -s | tar xz
+      cd `{basename $pkg_url .tar.gz}
+      makepkg -s
+    }
+  }
+}
+
 #######################
 ## rc list functions ##
 #######################
