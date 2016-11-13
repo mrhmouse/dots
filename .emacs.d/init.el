@@ -1,3 +1,5 @@
+(package-initialize)
+
 (defun load-init-files ()
   "Load every elisp file in init.d"
   (dolist (file (init-files))

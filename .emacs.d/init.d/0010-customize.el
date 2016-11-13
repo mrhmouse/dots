@@ -4,6 +4,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(browse-url-browser-function (quote eww-browse-url))
@@ -13,8 +15,8 @@
  '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
-    ("ebfa8d0654af120fff174bc7ec08bf1fef63df97bdeff63161dbff6f61cef747" default)))
- '(electric-indent-mode nil)
+    ("065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "ebfa8d0654af120fff174bc7ec08bf1fef63df97bdeff63161dbff6f61cef747" default)))
+ '(electric-indent-mode t)
  '(erc-menu-mode t)
  '(erc-nick "jordan")
  '(erc-server "localhost")
@@ -22,10 +24,14 @@
  '(hl-paren-background-colors (quote ("#e8fce8" "#c1e7f8" "#f8e8e8")))
  '(hl-paren-colors (quote ("#40883f" "#0287c8" "#b85c57")))
  '(indent-tabs-mode nil)
+ '(package-selected-packages
+   (quote
+    (smart-tabs-mode xresources-theme typescript-mode toml-mode toml slime rustfmt rc-mode racer pkgbuild-mode paredit nhexl-mode malabar-mode magit javadoc-lookup god-mode git-messenger flymake-rust flycheck-rust eclim company-racer cargo)))
  '(sml/active-background-color "#98ece8")
  '(sml/active-foreground-color "#424242")
  '(sml/inactive-background-color "#4fa8a8")
  '(sml/inactive-foreground-color "#424242")
+ '(tab-width 2)
  '(tool-bar-mode nil))
 
 (custom-set-faces
