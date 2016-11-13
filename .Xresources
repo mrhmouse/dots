@@ -9,10 +9,10 @@ URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
 
 ! Font
-URxvt.font: xft:Source Code Pro:style=Regular:size=12
-URxvt.boldFont: xft:Source Code Pro:style=Bold:size=12
-URxvt.italicFont: xft:Source Code Pro:style=Italic:size=12
-URxvt.boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=12
+URxvt.font: xft:Source Code Pro:style=Regular:size=8
+URxvt.boldFont: xft:Source Code Pro:style=Bold:size=8
+URxvt.italicFont: xft:Source Code Pro:style=Italic:size=8
+URxvt.boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=8
 
 ! HiDPI Settings
 Xft.dpi: 140
