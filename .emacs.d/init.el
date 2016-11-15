@@ -14,3 +14,9 @@
   (concat user-emacs-directory "init.d/"))
 
 (load-init-files)
+
+;; Global settings
+(menu-bar-mode -1)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)

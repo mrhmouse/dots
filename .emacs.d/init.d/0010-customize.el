@@ -11,6 +11,7 @@
  '(browse-url-browser-function (quote eww-browse-url))
  '(coffee-indent-tabs-mode nil)
  '(coffee-tab-width 4)
+ '(column-number-mode t)
  '(cursor-type (quote box))
  '(custom-enabled-themes nil)
  '(custom-safe-themes
