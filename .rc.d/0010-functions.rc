@@ -1,6 +1,6 @@
 #!/usr/bin/rc
 
-if (~ `{uname -a} *Debian*) {
+if (~ `{uname -a} *linode*) {
   os_flavor=debian
 } else {
   os_flavor=arch
@@ -169,6 +169,11 @@ fn watchimg { # watch for new files in the current directory, and display them v
       $* $f(3)
     }
   }
+}
+
+fn t { # display images at tmux pane-size with tiv
+  tiv_opts=`{tmux display-message -p -- '-w #{pane_width} -h #{pane_height}'}
+  tiv $tiv_opts $*
 }
 
 fn getwalls { # (query, [page]) download wallpapers
