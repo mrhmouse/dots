@@ -17,7 +17,7 @@
  '(custom-safe-themes
    (quote
     ("065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "ebfa8d0654af120fff174bc7ec08bf1fef63df97bdeff63161dbff6f61cef747" default)))
- '(electric-indent-mode t)
+ '(electric-indent-mode nil)
  '(erc-menu-mode t)
  '(erc-nick "jordan")
  '(erc-server "localhost")
