@@ -1,5 +1,5 @@
 #!/usr/bin/rc
-path=($home/.bin $path)
+path=($home/.bin $home/Packages/bin $path)
 
 for (file in $home/.rc.d/*) {
   if (test -x $file) {

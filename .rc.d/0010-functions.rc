@@ -176,6 +176,14 @@ fn t { # display images at tmux pane-size with tiv
   tiv $tiv_opts $*
 }
 
+fn i { # display image with img2sixel
+  if (~ $sixel_width ()) {
+    img2sixel $*
+  } else {
+    img2sixel -w $sixel_width $*
+  }
+}
+
 fn getwalls { # (query, [page]) download wallpapers
   page=1 {
     if (~ $#* 2) {
