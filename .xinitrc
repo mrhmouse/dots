@@ -1,9 +1,8 @@
-#!/usr/bin/zsh
+#!/usr/bin/env rc
 
 pulseaudio --start
-xmodmap ~/.xmodmaprc
-~/.fehbg
-xrdb ~/.Xresources
-source ~/.current-colors && xrdb -merge <(tmpl2xdefaults)
-# exec herbstluftwm
+xmodmap $home/.xmodmaprc
+$home/.fehbg
+xrdb $home/.Xresources
+. $home/.current-colors && xrdb -merge <{tmpl2xdefaults}
 exec dwm
