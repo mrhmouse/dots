@@ -1,0 +1,2 @@
+#!/usr/bin/env rc
+java -cp $home/Code/terminalimageviewer/src/main/java TerminalImageViewer -256 $*
