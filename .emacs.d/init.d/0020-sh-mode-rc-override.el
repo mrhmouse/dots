@@ -3,6 +3,6 @@
  'sh-mode-hook
  (lambda ()
    (save-excursion
-     (beginning-of-buffer)
+     (goto-char (point-min))
      (when (looking-at ".*\\<rc$")
        (rc-mode)))))
