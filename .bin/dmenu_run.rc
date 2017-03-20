@@ -1,0 +1,15 @@
+#!/usr/bin/env rc
+
+fn first_of {
+  result=()
+  while (! ~ $* ()) {
+    result=$$1
+    if (! ~ $result ()) {
+      break
+    }
+
+    shift
+  }
+}
+
+dmenu_run -fn 'Dina:size=8' -nb '#'$DWM_NORMBG -nf '#'$DWM_NORMFG -sb '#'$DWM_SELBG -sf '#'$DWM_SELFG
