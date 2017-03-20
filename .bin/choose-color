@@ -23,11 +23,14 @@ fn show_colors {
 fn get_next_command {
   echo '[N]ext theme'
   echo '[P]revious theme'
+  echo '[R]andom theme'
   line=`{head -n1 | awk '{print $1}'} {
     if (~ $line [Nn]*) {
       position=`{echo 1 + $position | bc}
     } else if (~ $line [Pp]*) {
       position=`{echo $position - 1 | bc}
+    } else if (~ $line [Rr]*) {
+      position=``(){ perl -e 'use POSIX (); print(POSIX::ceil(rand('^$#available_colors^')))' }
     } else {
       get_next_command
       return

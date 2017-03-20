@@ -5,7 +5,7 @@ fn escape {
 }
 
 fn block {
-  printf '▄▀'
+  printf '##'
 }
 
 fn sep {
@@ -46,10 +46,4 @@ fn grid {
   escape 0
 }
 
-cachefile=$home/.colorgrid.cache {
-  if (! test -e $cachefile) {
-    grid > $cachefile
-  }
-  
-  cat $cachefile
-}
+grid
