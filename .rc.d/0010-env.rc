@@ -11,4 +11,4 @@ PAGER=less
 
 history=$home/.history
 
-LS_COLORS='no=0:fi=0:di=44;37:ln=36:or=41;37:mi=41;37:pi=32:so=32;47:bd=45;37:cd=45;37:ex=33;40:'
+LS_COLORS='di=1;34:ln=32:so=33:pi=33:ex=1;0:bd=33;46:cd=31;47:su=30;1;41:sg=1;30;1;41:tw=30;1;42:ow=37;1;44'
