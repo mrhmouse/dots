@@ -1,5 +1,6 @@
 #!/usr/bin/env rc
 
+xhost +SI:localuser:jordan
 pulseaudio --start
 xmodmap $home/.xmodmaprc
 $home/.fehbg
