@@ -21,6 +21,3 @@
                             'paredit-backward-barf-sexp)
             (global-set-key (kbd "M-[ d")
                             'paredit-forward-barf-sexp)))
-
-;; set up Quicklisp SLIME
-(load (expand-file-name "~/quicklisp/slime-helper.el"))

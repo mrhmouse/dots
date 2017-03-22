@@ -31,13 +31,14 @@
  '(indent-tabs-mode nil)
  '(package-selected-packages
    (quote
-    (smart-tabs-mode xresources-theme typescript-mode toml-mode toml slime rustfmt rc-mode racer pkgbuild-mode paredit nhexl-mode malabar-mode magit javadoc-lookup god-mode git-messenger flymake-rust flycheck-rust eclim company-racer cargo)))
+    (exwm which-key smart-tabs-mode xresources-theme typescript-mode toml-mode toml slime rustfmt rc-mode racer pkgbuild-mode paredit nhexl-mode malabar-mode magit javadoc-lookup god-mode git-messenger flymake-rust flycheck-rust eclim company-racer cargo)))
  '(sml/active-background-color "#98ece8")
  '(sml/active-foreground-color "#424242")
  '(sml/inactive-background-color "#4fa8a8")
  '(sml/inactive-foreground-color "#424242")
  '(tab-width 2)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(which-key-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
