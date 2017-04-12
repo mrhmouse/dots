@@ -15,6 +15,7 @@ for (color_file in $home/.colors/*) {
 
 fn show_colors {
   tmpl2linux
+  clear
   colorgrid
   echo 'Currently viewing: '^`{basename $available_colors($position)}
   echo

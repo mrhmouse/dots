@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+{
+  cd $home/Games/itch.io/eggnogg+
+  ./eggnoggplus
+}
