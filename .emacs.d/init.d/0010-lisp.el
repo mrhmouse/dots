@@ -1,7 +1,5 @@
-(dolist (hook '(paredit-mode))
-  (add-hook 'lisp-mode-hook hook))
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'comint-mode-hook 'paredit-mode)
+(dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook comint-mode-hook clojure-mode-hook))
+  (add-hook hook 'paredit-mode))
 
 (setq common-lisp-hyperspec-root
       (concat "file://"
