@@ -1,0 +1,76 @@
+#!/usr/bin/env rc
+
+fn usage {
+  echo '
+  A wrapper script for generating TOTP passwords
+
+  Usage:
+    totp [-a|--add] <name of resource> <secret>
+    totp [-g|--get] <name of resource>
+    totp [-h|--help]
+
+  With the -a or --add option, create a new resource with the given name
+  and secret. With the -g or --get option, fetch the current TOTP password
+  for the given resource. You may be prompted to unlock your keyring.
+
+  With the -h or --help option, show this help message.
+  '
+}
+
+fn check_required_apps {
+  has_error=0 {
+    if (! which oathtool > /dev/null) {
+      echo 'This script requires "oathtool" in your path'
+      has_error = 1
+    }
+
+    if (! which pass > /dev/null) {
+      echo 'This script requires "pass" in your path'
+      has_error = 1
+    }
+
+    if (~ $has_error 1) {
+      usage
+      exit 1
+    }
+  }
+}
+
+fn add_resource {
+  pass insert totp/$1/code <<EOF
+$2
+EOF
+}
+
+fn get_resource {
+  secret=`{pass show totp/$1/code} {
+    oathtool --totp --base32 '--digits=6' $secret
+  }
+}
+
+fn main {
+  check_required_apps
+  while (! ~ $* ()) {
+    switch ($1) {
+      case -h --help
+        usage
+        exit 0
+      case -a --add
+        shift
+        add_resource $*
+        return
+      case -g --get
+        shift
+        get_resource $*
+        return
+      case *
+        echo 'Unknown option: ' $1
+        usage
+        exit 1
+    }
+  }
+
+  usage
+}
+
+main $*
