@@ -11,6 +11,7 @@ if (~ `{uname -a} *linode*) {
 ########################
 
 fn whats { # search for software
+  that=$*
   if (~ $os_flavor debian) {
     apt-cache search $* | grep '--color=always' '^\S* - ' | less -R
   } else {
@@ -44,11 +45,13 @@ fn drop { # remove software
 
 if (~ $os_flavor debian) {
   fn makedeb { # build a debian package from source ONLY ON DEBIAN
+    that=$*
     dpkg-buildpackage -rfakeroot -uc -b
   }
 }
 
 fn howdoi { # print executable files given by a package
+  that=$*
   if (~ $os_flavor debian) {
     f = () for (f in `{dpkg -L $1}) {
       if (test -x $f && ! test -d $f) {
@@ -65,6 +68,7 @@ fn howdoi { # print executable files given by a package
 }
 
 fn about { # print man-pages given by a package
+  that=$*
   if (~ $os_flavor debian) {
     basename -a `{dpkg -L $1 | grep '^/usr/share/man/.*gz'} | sort
   } else {
@@ -74,6 +78,7 @@ fn about { # print man-pages given by a package
 
 if (~ $os_flavor arch) {
   fn aurfind { # ON ARCH find an AUR package
+    that=$*
     @ {
       url = 'https://aur.archlinux.org/rpc?v=5&type=search&arg='
       curl $url^$^* -s | jq '.results[]' -C | less -R
@@ -98,6 +103,7 @@ if (~ $os_flavor arch) {
 #######################
 
 fn pop { # pop the head from a list
+  that=$*
   name=$1
   *=$$name
   popped=$1
@@ -107,6 +113,7 @@ fn pop { # pop the head from a list
 }
 
 fn push { # (list x ...) push x onto list
+  that=$*
   name=$1 {
     shift
     x = () for (x in $*) {
@@ -116,6 +123,7 @@ fn push { # (list x ...) push x onto list
 }
 
 fn join { # (list sep) join a list by sep
+  that=$*
   sep=$2 {
     *=$$1
     while (true) {
@@ -151,13 +159,6 @@ fn jmp { # jump into a directory, creating it if needed
   mkdir -p $1 && cd $1
 }
 
-fn pne { # perl -ne while (/.../g) { print ...\n }
-  x = $2 {
-    if (~ $x ()) { x = '$1' }
-    perl -ne 'while (/'$1'/g) { print "'$x'\n" }'
-  }
-}
-
 ###########
 ## papes ##
 ###########
@@ -185,6 +186,7 @@ fn i { # display image with img2sixel
 }
 
 fn getwalls { # (query, [page]) download wallpapers
+  that=$*
   page=1 {
     if (~ $#* 2) {
       page=$2
