@@ -93,7 +93,7 @@ if (~ $os_flavor arch) {
       cd $home/aur
       curl $aur^$pkg_url -s | tar xz
       cd `{basename $pkg_url .tar.gz}
-      makepkg -s
+      makepkg -si
     }
   }
 }
