@@ -1,16 +1,21 @@
 #!/usr/bin/env rc
 
+if (~ $window ()) {
+  window=1
+}
+
 fn usage {
   echo '
   A wrapper script for generating TOTP passwords
 
   Usage:
-    totp [-a|--add] <name of resource> <secret>
+    totp [-a|--add] <name of resource>
     totp [-g|--get] <name of resource>
     totp [-h|--help]
 
-  With the -a or --add option, create a new resource with the given name
-  and secret. With the -g or --get option, fetch the current TOTP password
+  With the -a or --add option, create a new resource with the given name.
+
+  With the -g or --get option, fetch the current TOTP password
   for the given resource. You may be prompted to unlock your keyring.
 
   With the -h or --help option, show this help message.
@@ -37,14 +42,12 @@ fn check_required_apps {
 }
 
 fn add_resource {
-  pass insert totp/$1/code <<EOF
-$2
-EOF
+  pass insert totp/$1/code
 }
 
 fn get_resource {
   secret=`{pass show totp/$1/code} {
-    oathtool --totp --base32 '--digits=6' $secret
+    oathtool -b --totp -w $window $secret
   }
 }
 
