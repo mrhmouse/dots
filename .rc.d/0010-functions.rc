@@ -198,6 +198,13 @@ fn getwalls { # (query, [page]) download wallpapers
   }
 }
 
+################
+## Dictionary ##
+################
+fn zh { # search CEDICT
+  < $home/Docs/cedict/cedict.txt sed '/^#/d' | grep $* | less
+}
+
 ###################
 ## Introspection ##
 ###################
