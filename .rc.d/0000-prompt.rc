@@ -3,7 +3,8 @@ nl='
 '
 
 fn prompt {
-  h=() color=32 s=$status(1) {
+  s=$status
+  h=() color=32 s=$s(1) {
     if (! ~ $s 0) {
       color=31
     }
