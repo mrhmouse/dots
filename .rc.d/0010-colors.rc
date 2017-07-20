@@ -1,2 +1,6 @@
 #!/usr/bin/env rc
 . $home/.current-colors
+
+if (~ () $TMUX) {
+  tmpl2linux
+}
