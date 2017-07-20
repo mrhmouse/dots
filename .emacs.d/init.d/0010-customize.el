@@ -22,6 +22,9 @@
  '(erc-menu-mode t)
  '(erc-nick "jordan")
  '(erc-server "localhost")
+ '(eshell-visual-commands
+   (quote
+    ("vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "rtv")))
  '(fci-rule-color "#f8fce8")
  '(geiser-active-implementations (quote (chicken)))
  '(geiser-default-implementation (quote chicken))
