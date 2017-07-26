@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+tmux split-window -v -l 2 'irc-prompt '^$1
+clear
+exec irc-display $1

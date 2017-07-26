@@ -1,0 +1,6 @@
+#!/usr/bin/env rc
+
+while (true) {
+  clear
+  rlwrap -S 'irc. ' head -n 1 > $1/in
+}
