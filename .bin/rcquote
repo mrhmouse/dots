@@ -1,0 +1,12 @@
+#!/usr/bin/env rc
+# Quotes each of its input arguments as rc strings
+
+while (! ~ 0 $#*) {
+  echo -n ''''
+  echo -n $1 | sed 's_''_''''_g'
+  echo -n ''''
+  shift
+  if (! ~ () $1) {
+    echo -n ' '
+  }
+}
