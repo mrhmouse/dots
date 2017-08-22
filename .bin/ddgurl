@@ -1,0 +1,2 @@
+#!/usr/bin/env rc
+echo -n 'https://ddg.gg/?q='`{ echo -n $* | percentencode }

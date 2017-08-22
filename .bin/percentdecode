@@ -1,0 +1,2 @@
+#!/usr/bin/env rc
+exec printf `{ sed s_%_\\x_g }
