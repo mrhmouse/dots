@@ -1,49 +1,72 @@
-#!/usr/bin/env rc
+#!/usr/bin/env ruby
+# coding: utf-8
 
-fn escape {
-  printf '\e[%sm' $1
-}
+def col(key, name)
+  return [ key, ENV[name], ENV["BOLD_" + name] ]
+end
 
-fn block {
-  printf '##'
-}
+colors = [
+  col(:bla, "BLACK"),
+  col(:red, "RED"),
+  col(:gre, "GREEN"),
+  col(:yel, "YELLOW"),
+  col(:blu, "BLUE"),
+  col(:mag, "MAGENTA"),
+  col(:cya, "CYAN"),
+  col(:whi, "WHITE"),
+]
 
-fn sep {
-  printf '  '
-}
-
-fn chunk {
-  escape $1
-  block
-  block
-}
-
-fn row {
-  sep
-  for (n) {
-    chunk $n
-    sep
-  }
+def esc(code, value)
+  printf("\e%s%s", code, value)
+end
   
-  echo
-}
 
-fn fg_row {
-  escape 1
-  row 30 31 32 33 34 35 36 37
-  escape 22
-  row 30 31 32 33 34 35 36 37
-}
+def apply_colors(colors)
+  8.times do |i|
+    code = ']P' + i.to_s(16).upcase
+    esc(code, colors[i][1])
+    code = ']P' + (i+8).to_s(16).upcase
+    esc(code, colors[i][2])
+  end
+end
 
-fn grid {
-  escape 0
-  fg_row
-  for (n in 40 41 42 43 44 45 46 47) {
-    escape $n
-    fg_row
-  }
-  
-  escape 0
-}
+def reset
+  esc('[', '0m')
+end
 
-grid
+def bold
+  esc('[', '1m')
+end
+
+def norm
+  esc('[', '22m')
+end
+
+def color_print(color, *items)
+  esc('[', color.to_s + 'm')
+  items.each do |item|
+    print(item)
+    print(" ")
+  end
+end
+
+def print_ui(colors)
+  puts '    NORM BOLD'
+  apply_colors(colors)
+  8.times do |i|
+    k = colors[i]
+    n = 30 + i
+    norm
+    color_print(n, k[0], '████')
+    bold
+    color_print(n, "████")
+    norm
+    color_print(n, k[1])
+    bold
+    color_print(n, k[2])
+    puts
+  end
+  reset
+end
+
+print_ui(colors)
