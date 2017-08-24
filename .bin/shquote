@@ -1,9 +1,9 @@
 #!/usr/bin/env rc
-# Quotes eac of its input arguments as sh strings
+# Quotes each of its input arguments as sh strings
 
 while (! ~ 0 $#*) {
   echo -n ''''
-  echo -n $1 | sed 's_\(''\|\\\)_\\\1_g'
+  echo -n $1 | sed -e 's_\(''\)_''\\''''_g'
   echo -n ''''
   shift
   if (! ~ () $1) {
