@@ -1,5 +1,8 @@
 #!/usr/bin/env rc
 
-tmux split-window -v -l 2 ``(){ shquote irc-prompt $1 }
-clear
-exec irc-display $1
+dir = $1
+{
+  cd $dir
+  tmux split-window -v -l 2 ``(){ shquote irc-prompt . }
+  exec irc-display .
+}
