@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+
+u = 'https://www.bitstamp.net/api/v2/ticker/btcusd/'
+
+r = Net::HTTP.get URI u
+o = JSON.parse r
+def s o, f
+  puts "#{f.upcase}	#{o[f]}"
+end
+
+%w{high last low bid ask volume open vwap}.each {|f| s o, f}
