@@ -1,8 +1,9 @@
 #!/usr/bin/env rc
 
 dir = $1
-{
+@ {
   cd $dir
+  clear
   tmux split-window -v -l 2 ``(){ shquote irc-prompt . }
   exec irc-display .
 }
