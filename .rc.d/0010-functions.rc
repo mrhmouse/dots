@@ -138,6 +138,20 @@ fn join { # (list sep) join a list by sep
   }
 }
 
+fn assoc { # (alist key) look up a value in an alist
+  list = $1 key = $2 {
+    * = $$list
+    while (! ~ () $*) {
+      if (~ $key $1) {
+	echo $2
+	return
+      }
+      shift
+      shift
+    }
+  }
+}
+
 #########################
 ## Shorthand functions ##
 #########################
@@ -204,7 +218,7 @@ fn getwalls { # (query, [page]) download wallpapers
 ## Dictionary ##
 ################
 fn zh { # search CEDICT
-  < $home/Docs/cedict/cedict.txt sed '/^#/d' | grep $* | less
+  < $home/Docs/cedict/cedict.txt sed '/^#/d' | grep $^* | less
 }
 
 ###################
