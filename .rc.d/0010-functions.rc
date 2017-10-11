@@ -1,4 +1,6 @@
 #!/usr/bin/rc
+# -*- mode: rc; -*-
+
 
 if (~ `{uname -a} *linode*) {
   os_flavor=debian
@@ -157,7 +159,7 @@ fn assoc { # (alist key) look up a value in an alist
 #########################
 
 fn l { # ls --color=always
-  ls --color'='always $*
+  ls --color'='always -c $*
 }
 
 fn cls { # clear ; ls
@@ -219,6 +221,17 @@ fn getwalls { # (query, [page]) download wallpapers
 ################
 fn zh { # search CEDICT
   < $home/Docs/cedict/cedict.txt sed '/^#/d' | grep $^* | less
+}
+
+#####################
+## File management ##
+#####################
+fn wander { # Wander into a random directory, optionally deeply (-d)
+  if (~ $1 -d) {
+    cd `{ find -L -type d >[2=] | shuf | head -n1 }
+  } else {
+    cd `{ find -L . -maxdepth 1 -type d >[2=] | shuf | head -n1 }
+  }
 }
 
 ###################

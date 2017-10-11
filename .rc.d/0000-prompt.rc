@@ -11,6 +11,11 @@ fn prompt {
 
     h=``($nl){pwd | sed 's_'$home'_~_'}
     h=$h(1)
-    prompt=(`` () {printf '\e[%im# %s\e[0m on %s\n' $color $h `hostname} '- ')
+    prompt=(``(){
+      printf '\e[%im' $color
+      echo '#' $h
+      echo -n '#' `whoami @ `hostname
+      printf '\e[0m\n'
+    } '- ')
   }
 }
