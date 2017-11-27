@@ -1,15 +1,15 @@
 ! URxvt
 URxvt.scrollBar: false
 URxvt.saveLines: 16
-! URxvt.transparent: true
-! URxvt.shading: 32
+URxvt.transparent: true
+URxvt.shading: 24
 URxvt.cursorBlink: true
-URxvt.geometry: 86x26
+URxvt.geometry: 70x24
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
 
 ! Font
-URxvt.font: xft:Dina:size=9
+URxvt.font: xft:DejaVu Sans Mono:size=16
 
 ! HiDPI Settings
 Xft.dpi: 140
