@@ -15,6 +15,10 @@ fn prompt {
       printf '\e[%im' $color
       echo '#' $h
       echo -n '#' `whoami @ `hostname
+      if (! ~ $TMUX ()) {
+	  session_name=``($nl){tmux display-message -p '#{session_name}'}
+	  echo -n ' (tmux:'^$session_name^')'
+      }
       printf '\e[0m\n'
     } '- ')
   }
